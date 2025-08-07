@@ -388,6 +388,10 @@
       "surname": "Last name",
       "country": "Country",
       "city": "City",
+      "company": "Company",
+      "position": "Position",
+      "telephone": "Phone Number",
+      "email": "Email",
       "bio": "Bio"
     },
     "socials": {

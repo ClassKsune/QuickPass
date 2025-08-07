@@ -5,9 +5,13 @@ import styled from "styled-components";
 export const DigitalProfileWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
-    width: max-content;
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px;
     margin-inline: auto;
+    
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
 `
 
 export const DigitalProfileImageWrapper = styled.div`
@@ -17,6 +21,103 @@ export const DigitalProfileImageWrapper = styled.div`
     border-top-left-radius: ${BorderRadius.md};
     border-top-right-radius: ${BorderRadius.md};
     overflow: hidden;
+
+    .menu-container {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 20;
+    }
+
+    .menu-button-overlay {
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+        transition: all 0.2s ease;
+
+        .dots-icon {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 140px;
+        overflow: hidden;
+        animation: slideDown 0.2s ease-out;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .menu-item {
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        background: white;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+
+        &:active {
+            background: #e0e0e0;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+            color: #666;
+        }
+
+        span {
+            font-weight: 500;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #f0f0f0;
+        }
+    }
 `;
 
 export const DigitalProfileImage = styled(Image)<{ $set: boolean }>`
@@ -83,6 +184,18 @@ export const DigitalProfileBioStyled = styled.div`
     border-left: 4px solid ${Colors.gray};
 `
 
+export const DigitalProfileJobInfoStyled = styled.div`
+    margin-bottom: ${Spacing.sm};
+
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: ${Colors.black};
+        line-height: 1.4;
+    }
+`
+
 export const DigitalProfileTitleWrapperStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -101,7 +214,7 @@ export const DigitalProfileTitleWrapperStyled = styled.div`
         text-align: right;
     }
 
-    div {
+    .location-wrapper {
         display: flex;
         height: max-content;
         column-gap: ${Spacing.sm};

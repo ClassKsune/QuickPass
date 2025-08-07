@@ -52,6 +52,22 @@ const profileSchema = new Schema(
       type: String,
       default: null,
     },
+    company: {
+      type: String,
+      default: null,
+    },
+    position: {
+      type: String,
+      default: null,
+    },
+    telephone: {
+      type: String,
+      default: null,
+    },
+    email: {
+      type: String,
+      default: null,
+    },
     socials: {
       type: [{
         _id: { type: String, default: uuidv4 },

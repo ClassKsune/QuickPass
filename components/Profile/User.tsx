@@ -4,6 +4,9 @@ import { Textarea, TextInput, Button } from "@mantine/core";
 import styled from "styled-components";
 import { UploadButtonWithLabel } from "./UploadButtonWithLabel";
 import { useTranslations } from "next-intl";
+import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { copyToClipboard } from "@/utils/clipboard";
 
 interface ProfileProps {
     profile: ProfileState;
@@ -17,19 +20,36 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
         setProfile({ ...profile, [field]: value });
     };
 
-    const handleAliasButtonClick = () => {
+    const handleAliasButtonClick = async () => {
+        if (typeof window === 'undefined') return;
         
-         try {
-            navigator.clipboard.writeText(window.location.href + `/${profile.alias ?? profile.url}`);
-            console.log("Text copied to clipboard!");
-        } catch (err) {
-            console.error("Failed to copy: ", err);
-  }
+        const profileUrl = window.location.href + `/${profile.alias ?? profile.url}`;
+        const profileName = profile.name || 'Profile';
+        
+        const success = await copyToClipboard(profileUrl, {
+            useWebShare: true,
+            shareTitle: `${profileName} - QuickPass Profile`,
+            shareText: `Check out ${profileName}'s profile on QuickPass`,
+            fallbackMessage: "Copy this profile link:"
+        });
+        
+        if (success) {
+            console.log("Profile URL shared/copied successfully!");
+        } else {
+            console.log("Profile URL copy operation completed (manual fallback may have been used)");
+        }
     };
 
     return (
         <div>
-            <h1>{t("setup")}</h1>
+            <UserHeader>
+                <h1>{t("setup")}</h1>
+                <Button onClick={handleAliasButtonClick} style={{ marginLeft: "0.5rem", alignSelf: "flex-end" }}>
+                    <span>Share</span>
+                    <FontAwesomeIcon icon={faShare} />
+                </Button>
+            </UserHeader>
+            
             <AliasWrapper>
                 <TextInput
                     label={t("alias")}
@@ -40,9 +60,7 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                     value={profile.alias ?? ""}
                     style={{ flex: 1 }}
                 />
-                <Button onClick={handleAliasButtonClick} style={{ marginLeft: "0.5rem", alignSelf: "flex-end" }}>
-                    Share profile
-                </Button>
+                
             </AliasWrapper>
 
             <h2>
@@ -76,6 +94,32 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                     value={profile.city ?? ""}
                     style={{ gridColumn: "1 / -1" }}
                     label={t("city")}
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("company", target.value)}
+                    value={profile.company ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("company")}
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("position", target.value)}
+                    value={profile.position ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("position")}
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("telephone", target.value)}
+                    value={profile.telephone ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("telephone")}
+                    type="tel"
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("email", target.value)}
+                    value={profile.email ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("email")}
+                    type="email"
                 />
                 <Textarea
                     onChange={({ target }) => changeItem("bio", target.value)}
@@ -117,5 +161,35 @@ const AliasWrapper = styled.div`
 
     .mantine-TextInput-root {
         flex: 1;
+    }
+`;
+
+const UserHeader = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: ${Spacing.sm};
+
+
+    h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    button {
+        align-self: flex-end;
+        background-color: ${Colors.white};
+        border: 2px solid ${Colors.black};
+        transition: background-color 0.3s ease;
+        &:hover {
+            background-color: ${Colors.white};
+        }
+    }
+
+    span {
+        gap: ${Spacing.sm};
+        color: ${Colors.black};
+        font-weight: 700;
     }
 `;
