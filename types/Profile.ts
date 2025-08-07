@@ -26,6 +26,10 @@ export interface SocialState {
     country: string | null;
     city: string | null;
     bio: string | null;
+    company: string | null;
+    position: string | null;
+    telephone: string | null;
+    email: string | null;
     socials: SocialState[];
     links: LinkState[];
     videos: VideoState[];

@@ -393,6 +393,10 @@
             "surname": "Příjmení",
             "country": "Země",
             "city": "Město",
+            "company": "Společnost",
+            "position": "Pozice",
+            "telephone": "Telefon",
+            "email": "Email",
             "bio": "Bio"
         },
         "socials": {

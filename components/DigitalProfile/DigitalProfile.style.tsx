@@ -180,6 +180,21 @@ export const DigitalProfileBioStyled = styled.div`
     border-left: 4px solid ${Colors.gray};
 `
 
+export const DigitalProfileJobInfoStyled = styled.div`
+    padding-left: ${Spacing.lg};
+    padding-block: ${Spacing.xs};
+    border-left: 4px solid ${Colors.gray};
+    margin-bottom: ${Spacing.sm};
+
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: ${Colors.black};
+        line-height: 1.4;
+    }
+`
+
 export const DigitalProfileTitleWrapperStyled = styled.div`
     display: flex;
     flex-wrap: wrap;

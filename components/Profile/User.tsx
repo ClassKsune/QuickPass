@@ -77,6 +77,32 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                     style={{ gridColumn: "1 / -1" }}
                     label={t("city")}
                 />
+                <TextInput
+                    onChange={({ target }) => changeItem("company", target.value)}
+                    value={profile.company ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("company")}
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("position", target.value)}
+                    value={profile.position ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("position")}
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("telephone", target.value)}
+                    value={profile.telephone ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("telephone")}
+                    type="tel"
+                />
+                <TextInput
+                    onChange={({ target }) => changeItem("email", target.value)}
+                    value={profile.email ?? ""}
+                    style={{ gridColumn: "span 1" }}
+                    label={t("email")}
+                    type="email"
+                />
                 <Textarea
                     onChange={({ target }) => changeItem("bio", target.value)}
                     value={profile.bio ?? ""}

@@ -1,5 +1,5 @@
 import { ProfileState } from "@/types/Profile";
-import { DigitalVideosWrapperStyled, DigitalProfileBioStyled, DigitalProfileContentStyled, DigitalProfileImage, DigitalProfileImageWrapper, DigitalProfileTitleWrapperStyled, DigitalProfileWrapperStyled, DigitalLinkWrapperStyled, DigitalLinksWrapperStyled, DigitalProfileSocialsStyled, DigitalProfileSocialStyled } from "./DigitalProfile.style";
+import { DigitalVideosWrapperStyled, DigitalProfileBioStyled, DigitalProfileJobInfoStyled, DigitalProfileContentStyled, DigitalProfileImage, DigitalProfileImageWrapper, DigitalProfileTitleWrapperStyled, DigitalProfileWrapperStyled, DigitalLinkWrapperStyled, DigitalLinksWrapperStyled, DigitalProfileSocialsStyled, DigitalProfileSocialStyled } from "./DigitalProfile.style";
 import Image from "next/image";
 import ReactPlayer from 'react-player/youtube'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -108,6 +108,19 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                             </DigitalProfileSocialStyled>
                         ))}
                     </DigitalProfileSocialsStyled>
+                )}
+                {(profile.position || profile.company) && (
+                    <DigitalProfileJobInfoStyled>
+                        {profile.position && profile.company && (
+                            <h4>{`${profile.position}, ${profile.company}`}</h4>
+                        )}
+                        {profile.position && !profile.company && (
+                            <h4>{profile.position}</h4>
+                        )}
+                        {!profile.position && profile.company && (
+                            <h4>{profile.company}</h4>
+                        )}
+                    </DigitalProfileJobInfoStyled>
                 )}
                 {profile.bio && (
                     <DigitalProfileBioStyled>
