@@ -7,22 +7,32 @@ import { faMapMarkerAlt, faShare, faCopy, faHeart } from "@fortawesome/free-soli
 import { Colors } from "@/utils";
 import { SocialMediaIcon } from "./SocialMediaIcon";
 import { useState, useRef, useEffect } from "react";
+import { copyToClipboard } from "@/utils/clipboard";
 
 export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
-    const handleShare = () => {
+    const handleShare = async () => {
         if (typeof window === 'undefined') return;
         
-        try {
-            const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
-            navigator.clipboard.writeText(profileUrl);
-            console.log("Profile URL copied to clipboard!");
-            setIsMenuOpen(false); // Close menu after action
-        } catch (err) {
-            console.error("Failed to copy profile URL: ", err);
+        const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
+        const profileName = profile.name || 'Profile';
+        
+        const success = await copyToClipboard(profileUrl, {
+            useWebShare: true,
+            shareTitle: `${profileName} - QuickPass Profile`,
+            shareText: `Check out ${profileName}'s profile on QuickPass`,
+            fallbackMessage: "Copy this profile link:"
+        });
+        
+        if (success) {
+            console.log("Profile URL shared/copied successfully!");
+        } else {
+            console.log("Profile URL copy operation completed (manual fallback may have been used)");
         }
+        
+        setIsMenuOpen(false); // Close menu after action
     };
 
     const handleMenuToggle = () => {
@@ -34,17 +44,23 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
         setIsMenuOpen(false);
     };
 
-    const handleCopyLink = () => {
+    const handleCopyLink = async () => {
         if (typeof window === 'undefined') return;
         
-        try {
-            const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
-            navigator.clipboard.writeText(profileUrl);
+        const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
+        
+        const success = await copyToClipboard(profileUrl, {
+            useWebShare: false, // Force clipboard copy instead of share dialog
+            fallbackMessage: "Copy this profile link:"
+        });
+        
+        if (success) {
             console.log("Profile link copied to clipboard!");
-            setIsMenuOpen(false);
-        } catch (err) {
-            console.error("Failed to copy profile link: ", err);
+        } else {
+            console.log("Profile link copy operation completed (manual fallback may have been used)");
         }
+        
+        setIsMenuOpen(false);
     };
 
     // Close menu when clicking outside

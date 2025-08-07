@@ -6,6 +6,7 @@ import { UploadButtonWithLabel } from "./UploadButtonWithLabel";
 import { useTranslations } from "next-intl";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { copyToClipboard } from "@/utils/clipboard";
 
 interface ProfileProps {
     profile: ProfileState;
@@ -19,14 +20,24 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
         setProfile({ ...profile, [field]: value });
     };
 
-    const handleAliasButtonClick = () => {
+    const handleAliasButtonClick = async () => {
+        if (typeof window === 'undefined') return;
         
-         try {
-            navigator.clipboard.writeText(window.location.href + `/${profile.alias ?? profile.url}`);
-            console.log("Text copied to clipboard!");
-        } catch (err) {
-            console.error("Failed to copy: ", err);
-  }
+        const profileUrl = window.location.href + `/${profile.alias ?? profile.url}`;
+        const profileName = profile.name || 'Profile';
+        
+        const success = await copyToClipboard(profileUrl, {
+            useWebShare: true,
+            shareTitle: `${profileName} - QuickPass Profile`,
+            shareText: `Check out ${profileName}'s profile on QuickPass`,
+            fallbackMessage: "Copy this profile link:"
+        });
+        
+        if (success) {
+            console.log("Profile URL shared/copied successfully!");
+        } else {
+            console.log("Profile URL copy operation completed (manual fallback may have been used)");
+        }
     };
 
     return (
