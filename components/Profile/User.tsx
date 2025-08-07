@@ -4,6 +4,8 @@ import { Textarea, TextInput, Button } from "@mantine/core";
 import styled from "styled-components";
 import { UploadButtonWithLabel } from "./UploadButtonWithLabel";
 import { useTranslations } from "next-intl";
+import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface ProfileProps {
     profile: ProfileState;
@@ -29,7 +31,14 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
 
     return (
         <div>
-            <h1>{t("setup")}</h1>
+            <UserHeader>
+                <h1>{t("setup")}</h1>
+                <Button onClick={handleAliasButtonClick} style={{ marginLeft: "0.5rem", alignSelf: "flex-end" }}>
+                    <span>Share</span>
+                    <FontAwesomeIcon icon={faShare} />
+                </Button>
+            </UserHeader>
+            
             <AliasWrapper>
                 <TextInput
                     label={t("alias")}
@@ -40,9 +49,7 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                     value={profile.alias ?? ""}
                     style={{ flex: 1 }}
                 />
-                <Button onClick={handleAliasButtonClick} style={{ marginLeft: "0.5rem", alignSelf: "flex-end" }}>
-                    Share profile
-                </Button>
+                
             </AliasWrapper>
 
             <h2>
@@ -143,5 +150,35 @@ const AliasWrapper = styled.div`
 
     .mantine-TextInput-root {
         flex: 1;
+    }
+`;
+
+const UserHeader = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: ${Spacing.sm};
+
+
+    h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    button {
+        align-self: flex-end;
+        background-color: ${Colors.white};
+        border: 2px solid ${Colors.black};
+        transition: background-color 0.3s ease;
+        &:hover {
+            background-color: ${Colors.white};
+        }
+    }
+
+    span {
+        gap: ${Spacing.sm};
+        color: ${Colors.black};
+        font-weight: 700;
     }
 `;
