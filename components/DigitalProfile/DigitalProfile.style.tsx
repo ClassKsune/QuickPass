@@ -90,9 +90,41 @@ export const DigitalProfileTitleWrapperStyled = styled.div`
     column-gap: ${Spacing.sm};
     row-gap: ${Spacing.xs};
 
-    h2 {
-        font-size: 24px;
-        line-height: 24px;
+    .name-share-wrapper {
+        display: flex;
+        align-items: center;
+        column-gap: ${Spacing.sm};
+        flex: 1;
+
+        h2 {
+            font-size: 24px;
+            line-height: 24px;
+            margin: 0;
+        }
+
+        .share-button {
+            background: none;
+            border: 1px solid ${Colors.gray};
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: ${Colors.gray};
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: ${Colors.gray};
+                color: white;
+                border-color: ${Colors.gray};
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+        }
     }
 
     h3 {
@@ -101,7 +133,7 @@ export const DigitalProfileTitleWrapperStyled = styled.div`
         text-align: right;
     }
 
-    div {
+    .location-wrapper {
         display: flex;
         height: max-content;
         column-gap: ${Spacing.sm};
