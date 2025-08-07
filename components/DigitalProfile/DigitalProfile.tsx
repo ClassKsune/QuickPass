@@ -78,14 +78,6 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                                 <FontAwesomeIcon icon={faShare} />
                                 <span>Share</span>
                             </button>
-                            <button className="menu-item" onClick={handleCopyLink}>
-                                <FontAwesomeIcon icon={faCopy} />
-                                <span>Copy Link</span>
-                            </button>
-                            <button className="menu-item" onClick={handleSaveProfile}>
-                                <FontAwesomeIcon icon={faHeart} />
-                                <span>Save</span>
-                            </button>
                         </div>
                     )}
                 </div>
