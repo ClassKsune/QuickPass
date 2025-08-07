@@ -3,32 +3,92 @@ import { DigitalVideosWrapperStyled, DigitalProfileBioStyled, DigitalProfileCont
 import Image from "next/image";
 import ReactPlayer from 'react-player/youtube'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faShare, faCopy, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Colors } from "@/utils";
 import { SocialMediaIcon } from "./SocialMediaIcon";
+import { useState, useRef, useEffect } from "react";
 
 export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
     const handleShare = () => {
         if (typeof window === 'undefined') return;
         
         try {
             const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
             navigator.clipboard.writeText(profileUrl);
-            // You could add a toast notification here if needed
             console.log("Profile URL copied to clipboard!");
+            setIsMenuOpen(false); // Close menu after action
         } catch (err) {
             console.error("Failed to copy profile URL: ", err);
         }
     };
 
+    const handleMenuToggle = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleSaveProfile = () => {
+        console.log("Save profile functionality");
+        setIsMenuOpen(false);
+    };
+
+    const handleCopyLink = () => {
+        if (typeof window === 'undefined') return;
+        
+        try {
+            const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
+            navigator.clipboard.writeText(profileUrl);
+            console.log("Profile link copied to clipboard!");
+            setIsMenuOpen(false);
+        } catch (err) {
+            console.error("Failed to copy profile link: ", err);
+        }
+    };
+
+    // Close menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isMenuOpen]);
+
     return (
         <DigitalProfileWrapperStyled>
             <DigitalProfileImageWrapper>
                 <DigitalProfileImage $set={!!profile.image} priority src={profile.image || '/images/image_placeholder.svg'} alt="Profile picture" width={400} height={400} />
-                <button className="share-button-overlay" onClick={handleShare}>
-                    <span className="dots-icon">⋯</span>
-                    <span className="share-tooltip">Share</span>
-                </button>
+                <div className="menu-container" ref={menuRef}>
+                    <button className="menu-button-overlay" onClick={handleMenuToggle}>
+                        <span className="dots-icon">⋯</span>
+                    </button>
+                    {isMenuOpen && (
+                        <div className="dropdown-menu">
+                            <button className="menu-item" onClick={handleShare}>
+                                <FontAwesomeIcon icon={faShare} />
+                                <span>Share</span>
+                            </button>
+                            <button className="menu-item" onClick={handleCopyLink}>
+                                <FontAwesomeIcon icon={faCopy} />
+                                <span>Copy Link</span>
+                            </button>
+                            <button className="menu-item" onClick={handleSaveProfile}>
+                                <FontAwesomeIcon icon={faHeart} />
+                                <span>Save</span>
+                            </button>
+                        </div>
+                    )}
+                </div>
             </DigitalProfileImageWrapper>
             <DigitalProfileContentStyled>
                 <DigitalProfileTitleWrapperStyled>

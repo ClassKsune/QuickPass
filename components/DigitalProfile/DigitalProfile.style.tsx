@@ -18,10 +18,14 @@ export const DigitalProfileImageWrapper = styled.div`
     border-top-right-radius: ${BorderRadius.md};
     overflow: hidden;
 
-    .share-button-overlay {
+    .menu-container {
         position: absolute;
         top: 16px;
         right: 16px;
+        z-index: 20;
+    }
+
+    .menu-button-overlay {
         background: rgba(0, 0, 0, 0.5);
         border: none;
         border-radius: 50%;
@@ -33,7 +37,6 @@ export const DigitalProfileImageWrapper = styled.div`
         cursor: pointer;
         color: white;
         transition: all 0.2s ease;
-        z-index: 10;
 
         .dots-icon {
             font-size: 18px;
@@ -50,38 +53,65 @@ export const DigitalProfileImageWrapper = styled.div`
         &:active {
             transform: scale(0.95);
         }
+    }
 
-        .share-tooltip {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.2s ease;
-            pointer-events: none;
+    .dropdown-menu {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        min-width: 140px;
+        overflow: hidden;
+        animation: slideDown 0.2s ease-out;
+        border: 1px solid rgba(0, 0, 0, 0.1);
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: -4px;
-                left: 50%;
-                transform: translateX(-50%);
-                border-left: 4px solid transparent;
-                border-right: 4px solid transparent;
-                border-bottom: 4px solid rgba(0, 0, 0, 0.9);
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+    }
 
-        &:hover .share-tooltip {
-            opacity: 1;
-            visibility: visible;
+    .menu-item {
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        background: white;
+        color: #333;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+
+        &:active {
+            background: #e0e0e0;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+            color: #666;
+        }
+
+        span {
+            font-weight: 500;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #f0f0f0;
         }
     }
 `;
