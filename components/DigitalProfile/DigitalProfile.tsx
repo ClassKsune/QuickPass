@@ -25,15 +25,14 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
         <DigitalProfileWrapperStyled>
             <DigitalProfileImageWrapper>
                 <DigitalProfileImage $set={!!profile.image} priority src={profile.image || '/images/image_placeholder.svg'} alt="Profile picture" width={400} height={400} />
+                <button className="share-button-overlay" onClick={handleShare}>
+                    <FontAwesomeIcon icon={faShare} size="sm" />
+                    <span className="share-tooltip">Share</span>
+                </button>
             </DigitalProfileImageWrapper>
             <DigitalProfileContentStyled>
                 <DigitalProfileTitleWrapperStyled>
-                    <div className="name-share-wrapper">
-                        <h2>{`${profile.name} ${profile.surname}`}</h2>
-                        <button className="share-button" onClick={handleShare} title="Share profile">
-                            <FontAwesomeIcon icon={faShare} size="sm" />
-                        </button>
-                    </div>
+                    <h2>{`${profile.name} ${profile.surname}`}</h2>
                     {profile.country && profile.city && (
                         <div className="location-wrapper">
                             <FontAwesomeIcon icon={faMapMarkerAlt} size="lg" color={Colors.error} />

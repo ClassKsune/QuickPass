@@ -17,6 +17,66 @@ export const DigitalProfileImageWrapper = styled.div`
     border-top-left-radius: ${BorderRadius.md};
     border-top-right-radius: ${BorderRadius.md};
     overflow: hidden;
+
+    .share-button-overlay {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+        transition: all 0.2s ease;
+        z-index: 10;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        &:active {
+            transform: scale(0.95);
+        }
+
+        .share-tooltip {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-bottom: 4px solid rgba(0, 0, 0, 0.9);
+            }
+        }
+
+        &:hover .share-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 `;
 
 export const DigitalProfileImage = styled(Image)<{ $set: boolean }>`
@@ -90,41 +150,9 @@ export const DigitalProfileTitleWrapperStyled = styled.div`
     column-gap: ${Spacing.sm};
     row-gap: ${Spacing.xs};
 
-    .name-share-wrapper {
-        display: flex;
-        align-items: center;
-        column-gap: ${Spacing.sm};
-        flex: 1;
-
-        h2 {
-            font-size: 24px;
-            line-height: 24px;
-            margin: 0;
-        }
-
-        .share-button {
-            background: none;
-            border: 1px solid ${Colors.gray};
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: ${Colors.gray};
-            transition: all 0.2s ease;
-
-            &:hover {
-                background-color: ${Colors.gray};
-                color: white;
-                border-color: ${Colors.gray};
-            }
-
-            &:active {
-                transform: scale(0.95);
-            }
-        }
+    h2 {
+        font-size: 24px;
+        line-height: 24px;
     }
 
     h3 {
