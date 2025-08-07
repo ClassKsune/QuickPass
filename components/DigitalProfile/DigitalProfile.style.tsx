@@ -181,10 +181,7 @@ export const DigitalProfileBioStyled = styled.div`
 `
 
 export const DigitalProfileJobInfoStyled = styled.div`
-    padding-left: ${Spacing.lg};
-    padding-block: ${Spacing.xs};
-    border-left: 4px solid ${Colors.gray};
-    margin-bottom: ${Spacing.sm};
+    margin-bottom: ${Spacing.xs};
 
     h4 {
         margin: 0;
