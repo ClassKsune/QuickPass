@@ -5,9 +5,13 @@ import styled from "styled-components";
 export const DigitalProfileWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
-    width: max-content;
-    max-width: 100%;
+    width: 100%;
+    max-width: 400px;
     margin-inline: auto;
+    
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
 `
 
 export const DigitalProfileImageWrapper = styled.div`
