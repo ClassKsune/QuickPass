@@ -5,8 +5,32 @@ import ReactPlayer from 'react-player/youtube'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faShare, faCopy, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Colors } from "@/utils";
-import { SocialMediaIcon } from "./SocialMediaIcon";
+import { SocialMediaIcon, getIcon } from "./SocialMediaIcon";
 import { useState, useRef, useEffect } from "react";
+
+const getSocialMediaLabel = (url: string): string => {
+    const social = getIcon(url);
+    if (!social || !social.network) return 'Website';
+    
+    // Convert network names to display labels
+    const networkLabels: { [key: string]: string } = {
+        'facebook': 'Facebook',
+        'instagram': 'Instagram',
+        'twitter': 'Twitter',
+        'x-twitter': 'Twitter',
+        'linkedin': 'LinkedIn',
+        'youtube': 'YouTube',
+        'tiktok': 'TikTok',
+        'snapchat': 'Snapchat',
+        'pinterest': 'Pinterest',
+        'github': 'GitHub',
+        'discord': 'Discord',
+        'telegram': 'Telegram',
+        'whatsapp': 'WhatsApp'
+    };
+    
+    return networkLabels[social.network.toLowerCase()] || social.network;
+};
 
 export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,7 +120,10 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                     <DigitalProfileSocialsStyled>
                         {profile.socials.map((social) => (
                             <DigitalProfileSocialStyled key={social._id} href={social.url} target="_blank">
-                                <SocialMediaIcon url={social.url} />
+                                <div className="social-icon">
+                                    <SocialMediaIcon url={social.url} />
+                                </div>
+                                <span className="social-label">{getSocialMediaLabel(social.url)}</span>
                             </DigitalProfileSocialStyled>
                         ))}
                     </DigitalProfileSocialsStyled>
