@@ -20,13 +20,13 @@ export const DigitalProfileImageWrapper = styled.div`
 
     .share-button-overlay {
         position: absolute;
-        top: 12px;
-        right: 12px;
-        background: rgba(0, 0, 0, 0.7);
+        top: 16px;
+        right: 16px;
+        background: rgba(0, 0, 0, 0.5);
         border: none;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,9 +35,16 @@ export const DigitalProfileImageWrapper = styled.div`
         transition: all 0.2s ease;
         z-index: 10;
 
+        .dots-icon {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1;
+            letter-spacing: 1px;
+        }
+
         &:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.05);
         }
 
         &:active {

@@ -3,7 +3,7 @@ import { DigitalVideosWrapperStyled, DigitalProfileBioStyled, DigitalProfileCont
 import Image from "next/image";
 import ReactPlayer from 'react-player/youtube'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { Colors } from "@/utils";
 import { SocialMediaIcon } from "./SocialMediaIcon";
 
@@ -26,7 +26,7 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
             <DigitalProfileImageWrapper>
                 <DigitalProfileImage $set={!!profile.image} priority src={profile.image || '/images/image_placeholder.svg'} alt="Profile picture" width={400} height={400} />
                 <button className="share-button-overlay" onClick={handleShare}>
-                    <FontAwesomeIcon icon={faShare} size="sm" />
+                    <span className="dots-icon">⋯</span>
                     <span className="share-tooltip">Share</span>
                 </button>
             </DigitalProfileImageWrapper>
