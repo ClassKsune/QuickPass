@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="570" height="427" viewBox="0 0 570 427" xml:space="preserve">
+<desc>Created with Fabric.js 6.6.1</desc>
+<defs>
+</defs>
+
+
+<g style="" id="curvedText" clip-path="url(#CLIPPATH_31)"  >
+<g transform="matrix(1.3458 0.3701 -0.3701 1.3458 430.8627 242.2434)"  >
+<clipPath id="CLIPPATH_31" >
+	<rect transform="matrix(1 0 0 1 285.5 214)" x="-265" y="-193.5" rx="20" ry="20" width="530" height="387" />
+</clipPath>
+<defs>
+          <path id="textOnPath1ojiihfym" d="M -280 0 Q -130 -100 20 0 Q 170 100 280 0" />
+        </defs><text
+                font-family="Arial"
+                fill="rgb(0,0,0)"
+                font-size="16"
+                font-style="normal"
+                font-weight="400"
+                opacity="1"
+                letter-spacing="16"
+                >
+                  <textPath text-anchor="start"
+                  dominant-baseline="middle"
+                  startOffset="0"
+                  href="#textOnPath1ojiihfym"
+                  xlink:href="#textOnPath1ojiihfym">
+                  <tspan dy="0">Placeholder Text</tspan>
+                  </textPath>
+                </text></g>
+</g>
+</svg>

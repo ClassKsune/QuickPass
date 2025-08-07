@@ -1,0 +1,413 @@
+{
+    "Header": {
+        "navigation": {
+            "editor": "Editor karet",
+            "pricing": "Ceník",
+            "about": "O nás",
+            "faq": "FAQ"
+        },
+        "controls": {
+            "account": {
+                "login": "Přihlásit se",
+                "register": "Registrovat se"
+            },
+            "language": "Preferovaný jazyk:",
+            "basket": "Košík",
+            "orders": "Objednávky",
+            "profile": "Můj profil",
+            "logout": "Odhlásit se"
+        }
+    },
+    "Footer": {
+        "rights": "Všechna práva vyhrazena",
+        "links": {
+            "policy": "Zásady ochrany osobních údajů",
+            "terms": "Podmínky služby"
+        },
+        "aboutUs": {
+            "address": "Adresa",
+            "contact": "Kontakt"
+        }
+    },
+    "Reset": {
+        "title": "Resetování hesla",
+        "desc": "Zadejte své nové heslo a potvrďte ho.",
+        "newPassword": "Nové heslo",
+        "confirmPassword": "Potvrdit heslo",
+        "reset": "Obnovit heslo",
+        "account2": "chcete se přihlásit?",
+        "success": "Heslo bylo úspěšně změněno.",
+        "validation": {
+            "password": "Heslo musí mít alespoň 5 znaků",
+            "confirmPassword": "Hesla se neshodují",
+            "error": "Něco se pokazilo, zkuste to znovu později."
+        }
+    },
+    "Login": {
+        "title": "Přihlášení do systému.",
+        "desc": "Zadejte své přihlašovací údaje.",
+        "email": "Email",
+        "password": "Heslo",
+        "forgottenPassword": "Zapomenuté heslo",
+        "login": "Přihlásit se",
+        "sendEmail": "Odeslat email pro obnovení hesla",
+        "forgotTitle": "Zapomenuté heslo",
+        "forgotDesc": "Zadejte svůj email a my vám zašleme odkaz pro obnovení hesla.",
+        "emailSent": "Email pro obnovení hesla byl odeslán.",
+        "noAccount1": "Ještě nemáte účet a ",
+        "noAccount2": "chcete se zaregistrovat?",
+        "alreadyLogged": "Už jsi přihlášený.",
+        "account2": "chcete se přihlásit?",
+        "validation": {
+            "email": "Neplatný email",
+            "password": "Heslo musí mít alespoň 5 znaků",
+            "error": "Neplatné údaje"
+        }
+    },
+    "Register": {
+        "title": "Vytvořte si účet.",
+        "desc": "Chcete-li využívat naše služby, vytvořte si u nás účet.",
+        "name": "Jméno",
+        "surname": "Příjmení",
+        "email": "Email",
+        "password": "Heslo",
+        "terms": "Souhlasím s podmínkami *",
+        "personalData": "Souhlasím se zpracováním osobních údajů *",
+        "register": "Registrovat se",
+        "account1": "Již máte účet a ",
+        "account2": "chcete se přihlásit?",
+        "alreadyRegistered": "Už jsi zaregistrovaný.",
+        "validation": {
+            "name": "Jméno musí mít alespoň 3 znaky",
+            "surname": "Příjmení musí mít alespoň 4 znaky",
+            "email": "Neplatný email",
+            "password": "Heslo musí mít alespoň 5 znaků",
+            "terms": "Musíte souhlasit s podmínkami",
+            "personalData": "Musíte souhlasit se zpracováním osobních údajů"
+        }
+    },
+    "Editor": {
+        "cards": {
+            "cherry": "Třešen",
+            "sapeli": "Sapeli",
+            "rosewood": "Palisandr",
+            "maple": "Javor",
+            "black_walnut": "Černý ořech",
+            "bamboo": "Bambus"
+        },
+        "tools": {
+            "title": "Nástroje"
+        },
+        "text": {
+            "title": "Nastavte si svou kartu",
+            "text": "text",
+            "fontStyle": "Styl písma",
+            "fontSize": "Velikost písma",
+            "fontWeight": "Tloušťka písma",
+            "curveAngle": "Úhel",
+            "letterSpacing": "Velikost mezer"
+        },
+        "info": {
+            "part_1": "Upozorňujeme, že ",
+            "part_bold": "zadní strana karty je vyhrazena pro QR kód",
+            "part_2": ", takže můžete upravovat pouze přední stranu karty."
+        },
+        "delete_object": "ODSTRANIT VYBRANÝ OBJEKT",
+        "button": "Uložit a Pokračovat",
+        "reset_button": "Resetovat"
+    },
+    "Landing": {
+        "contact": "Thank you for contacting us! We will get back to you soon.",
+        "hero": {
+            "title": "<highlight>Sdílejte</highlight>, kdo jste, co děláte a kam směřujete – <highlight>rychleji a efektivněji</highlight> než kdy dřív.",
+            "subtitle": "Ať už jste jednotlivec, který buduje svou osobní značku, nebo firma, která chce <highlight>efektivně</highlight> prezentovat svůj tým – <highlight>QuickPass vám pomůže</highlight> sdílet vše podstatné a vždy aktuálně."
+        },
+        "whyUs": {
+            "stepForward": "Váháš, jestli je čas udělat krok vpřed?",
+            "title": "Proč právě QuickPass?",
+            "desc": "Naše moderní platforma spojuje výhody digitální vizitky a rozcestníku typu „link-in-bio“. Umožňuje vám jednoduše “QuickPassnout” kontakty, odkazy, projekty i osobní značku – online odkazem nebo osobně elegantní NFC vizitkou.",
+            "features": {
+                "fast": "rychlé",
+                "eco": "ekologicky šetrné",
+                "modern": "moderní",
+                "upToDate": "vždy aktuální"
+            },
+            "orderNow": "Objednat kartu"
+        },
+        "pros": {
+            "onePlace": {
+                "title": "Vše na jednom místě",
+                "desc": "Kontakty, sociální sítě, weby i projekty – přehledně, stylově a vždy aktuální."
+            },
+            "sharing": {
+                "title": "Sdílení během pár vteřin",
+                "desc": "Stačí přiložit kartu nebo poslat odkaz. Bez zdržování, bez aplikací."
+            },
+            "style": {
+                "title": "Váš styl, váš dojem",
+                "desc": "Vizuálně přizpůsobitelný profil i karta, které odráží vaši osobnost i profesionalitu."
+            }
+        },
+        "ourSolution": {
+            "subtitle": "Naše moderní řešení",
+            "title": "Unikátní řešení pro každého",
+            "desc": "Propojujeme inovace s praktičností",
+            "features": {
+                "eco": "Eko",
+                "digital": "Digitální",
+                "practical": "Praktické",
+                "modern": "Moderní"
+            }
+        },
+        "card": {
+            "title": "Elegantní NFC vizitka",
+            "subtitle": "Kvalitní zpracování, které zanechá dojem.",
+            "desc": "Z kvalitního dřeva, na míru gravírovaná s výběrovou elegancí – lehce dočištěná pro zdůraznění přirozené kresby a hladký povrch.",
+            "premium": {
+                "title": "Prémiové zpracování",
+                "desc": "Gravírovaná do detailu, každý kus jako originál. Jemnost, preciznost, styl."
+            },
+            "sharing": {
+                "title": "Bleskové sdílení",
+                "desc": "Přilož/naskenuj – bez aplikací, bez zdržení. Okamžitě předané informace."
+            },
+            "learnMore": "Zjistit více",
+            "register": "Registrovat se",
+            "openEditor": "Otevřít editor"
+        },
+        "nfc": {
+            "title": "Získejte kartu NFC ještě dnes!",
+            "desc": "Zažijte bezproblémové sdílení s naší kartou NFC - objednejte si ji nyní a pozvedněte svou síťovou hru!",
+            "orderNow": "Objednat nyní",
+            "learnMore": "Zjistit více"
+        },
+        "faq": {
+            "title": "FAQ",
+            "desc": "Najděte odpovědi na své otázky týkající se naší karty NFC a jejích funkcí.",
+            "moreQuestions": "Máte další otázky?",
+            "help": "Jsme tu, abychom vám pomohli!",
+            "contact": "Kontaktujte nás",
+            "takeALook": "Podívejte se na naše FAQ",
+            "questions": {
+                "whatIsNfc": {
+                    "question": "Co je to NFC a jak funguje?",
+                    "answer": "NFC (Near Field Communication) je technologie, která umožňuje bezdrátový přenos dat na velmi krátkou vzdálenost – stačí přiložit zařízení k sobě a během vteřiny dojde ke spojení. Používá se například při bezkontaktních platbách, přístupu do budov nebo moderním sdílení kontaktů přes chytré vizitky."
+                },
+                "whatDevicesItSupports": {
+                    "question": "Na kterých zařízeních NFC funguje?",
+                    "answer": "NFC dnes podporuje většina moderních chytrých telefonů, včetně: iPhonů (modely od iPhone 7 výše) Umístění: NFC anténa se obvykle nachází na zadní straně telefonu, často v horní části nebo uprostřed. Android telefonů (Samsung, Google Pixel, Xiaomi, Huawei a další) Umístění: NFC anténa bývá umístěna na zadní straně zařízení, většinou v horní části nebo uprostřed. chytrých hodinek (např. Apple Watch, Samsung Galaxy Watch)"
+                },
+                "isAppNeeded": {
+                    "question": "Je zapotřebí aplikace?",
+                    "answer": "Ne, pro načtení NFC vizitky není potřeba žádná aplikace. QuickPass funguje bez problémů na jakémkoli chytrém telefonu s podporou NFC."
+                },
+                "isItFree": {
+                    "question": "Jsou služby QuickPass zdarma?",
+                    "answer": "Ano, účet QuickPass může používat každý úplně zdarma. Více o srovnání výhod jednotlivých členství v sekci “ceník”."
+                },
+                "delivery": {
+                    "question": "Jak to probíhá s doručením?",
+                    "answer": "Všechny NFC produkty přijdou naprogramované s linkem tvého digitálního profilu. Zboží odesíláme přes zásilkovnu. Objednávky předáváme dopravci do 24 hodin. Dodání po ČR/SK do 7 pracovních dní."
+                }
+            }
+        },
+        "contactForm": {
+            "title": "Kontaktujte nás",
+            "desc": "Vyplňte formulář se svým dotazem a my vás budeme co nejdříve kontaktovat.",
+            "name": "Jméno",
+            "enterName": "Vaše jméno",
+            "surname": "Příjmení",
+            "enterSurname": "Vaše příjmení",
+            "email": "Email",
+            "enterEmail": "Váš email",
+            "phone": "Telefon",
+            "enterPhone": "Váš telefon",
+            "topic": "Vyberte téma",
+            "enterTopic": "Vyberte si téma...",
+            "message": "Zpráva",
+            "enterMessage": "Napište svou zprávu",
+            "terms": "Souhlasím s podmínkami a pravidly",
+            "submit": "Odeslat",
+            "topics": {
+                "general": "Obecné dotazy",
+                "support": "Podpora",
+                "business": "Obchodní spolupráce",
+                "feedback": "Zpětná vazba",
+                "other": "Jiné"
+            },
+            "validations": {
+                "name": "Jméno musí mít alespoň 3 znaky",
+                "surname": "Příjmení musí mít alespoň 4 znaky",
+                "email": "Neplatný email",
+                "phone": "Neplatné telefonní číslo",
+                "topic": "Musíte vybrat téma",
+                "message": "Zpráva musí mít alespoň 10 znaků",
+                "terms": "Musíte souhlasit s podmínkami a pravidly"
+            }
+        },
+        "profiles": {
+            "emily": {
+                "desc": "Tato karta NFC změnila způsob, jakým sdílím své informace. Je pohodlná a univerzální pro každou příležitost!",
+                "title": "Marketingový manažer, TechCo"
+            },
+            "clark": {
+                "desc": "Tato karta změnila můj způsob sdílení. Je praktická a univerzální pro každou příležitost!",
+                "title": "Majitel, TechCo"
+            }
+        }
+    },
+    "Pricing": {
+        "free": {
+            "title": "Zdarma",
+            "pros": {
+                "url": "Aktivní profil s vlastní URL",
+                "edit": "Úprava fotky, jména, bio, kontaktu",
+                "unlimitedUrls": "Libovolný počet odkazů",
+                "moreVideos": "Možnost přidání videí, sociálních sítí",
+                "rearrange": "Designové přeuspořádání bloků",
+                "qr": "Základní QR kód ke stažení"
+            },
+            "owned": "Již vlastněné",
+            "button": "Registrovat se"
+        },
+        "pro": {
+            "title": "Pro",
+            "pros": {
+                "allFree": "Vše z verze Zdarma",
+                "upcoming": "Pracujeme na",
+                "profiles": "3 samostatné profily na jeden účet",
+                "specific": "Osobní / Pracovní / Umělecký"
+            },
+            "buy": "Koupit nyní",
+            "button": "Přihlásit se"
+        },
+        "enterprise": {
+            "title": "Enterprise",
+            "pros": {
+                "contact": "Kontaktujte nás pro individuální ceny"
+            },
+            "button": "Kontaktujte nás"
+        }
+    },
+    "About": {
+        "title": "Proč s námi spolupracovat a kdo jsme?",
+        "subtitle": "Vysvětlete, na čem vaše společnost pracuje a jakou hodnotu poskytujete svým zákazníkům.",
+        "story": {
+            "subtitle": "Náš příběh",
+            "title": "Poví vám o našem příběhu a poslání",
+            "desc" : "Jsme společnost specializující se na moderní digitální vizitky. Nabízíme jedinečné řešení propojení fyzických vizitek s digitálním světem - naše vizitky obsahují NFC čip nebo QR kód, který umožňuje okamžitý přístup k vašim kontaktním informacím, webovým stránkám nebo profilům na sociálních sítích. Jednoduché, praktické a elegantní - budoucnost vizitek je tady!"
+        }
+    },
+    "FAQ": {
+        "title": "FAQs",
+        "desc": "Zde najdete odpovědi na nejčastější otázky ohledně našich NFC karet, jejich použití a možností. Pokud nenajdete odpověď na svůj dotaz, neváhejte nás kontaktovat.",
+        "questions": {
+            "whatIsNfc": {
+                "question": "Co je to NFC a jak funguje?",
+                "answer": "NFC (Near Field Communication) je technologie, která umožňuje bezdrátový přenos dat na velmi krátkou vzdálenost – stačí přiložit zařízení k sobě a během vteřiny dojde ke spojení. Používá se například při bezkontaktních platbách, přístupu do budov nebo moderním sdílení kontaktů přes chytré vizitky."
+            },
+            "whatDevicesItSupports": {
+                "question": "Na kterých zařízeních NFC funguje?",
+                "answer": "NFC dnes podporuje většina moderních chytrých telefonů, včetně: iPhonů (modely od iPhone 7 výše) Umístění: NFC anténa se obvykle nachází na zadní straně telefonu, často v horní části nebo uprostřed. Android telefonů (Samsung, Google Pixel, Xiaomi, Huawei a další) Umístění: NFC anténa bývá umístěna na zadní straně zařízení, většinou v horní části nebo uprostřed. chytrých hodinek (např. Apple Watch, Samsung Galaxy Watch)"
+            },
+            "isAppNeeded": {
+                "question": "Je zapotřebí aplikace?",
+                "answer": "Ne, pro načtení NFC vizitky není potřeba žádná aplikace. QuickPass funguje bez problémů na jakémkoli chytrém telefonu s podporou NFC."
+            },
+            "isItFree": {
+                "question": "Jsou služby QuickPass zdarma?",
+                "answer": "Ano, účet QuickPass může používat každý úplně zdarma. Více o srovnání výhod jednotlivých členství v sekci “ceník”."
+            },
+            "delivery": {
+                "question": "Jak to probíhá s doručením?",
+                "answer": "Všechny NFC produkty přijdou naprogramované s linkem tvého digitálního profilu. Zboží odesíláme přes zásilkovnu. Objednávky předáváme dopravci do 24 hodin. Dodání po ČR/SK do 7 pracovních dní."
+            }
+        },
+        "moreQuestions": "Máte další otázky?",
+        "info": "Pokud potřebujete další informace nebo máte specifický dotaz, jsme vám k dispozici na e-mailu nebo telefonu. Rádi vám poradíme a pomůžeme s výběrem i používáním našich produktů.",
+        "button": "Kontaktujte nás"
+    },
+    "Order": {
+        "packet": "Vyber si vyzvedávací místo",
+        "order": "Vaše objednávka",
+        "contact": "Kontaktní údaje",
+        "delivery": "Doručovací údaje",
+        "delivery_price": "Doručovací cena",
+        "shipping": "Způsob doručení",
+        "email": "Email",
+        "name": "Jméno",
+        "surname": "Příjmení",
+        "country": "Země",
+        "address": "Adresa",
+        "postalCode": "PSČ",
+        "phone": "Telefon",
+        "validations": {
+            "country": "Země musí být vybrána",
+            "name": "Jméno musí mít alespoň 3 znaky",
+            "surname": "Příjmení musí mít alespoň 4 znaky",
+            "address": "Adresa musí mít alespoň 5 znaků",
+            "postalCode": "PSČ musí mít alespoň 5 znaků",
+            "phone": "Neplatné telefonní číslo"
+        },
+        "logIn": "Musíte být přihlášeni, abyste mohli objednat kartu.",
+        "loginButton": "Přihlásit se",
+        "registerButton": "Registrovat se",
+        "noItems": "Nemáte žádné položky v košíku.",
+        "info": "Informace",
+        "total": "Celkem",
+        "checkout": "Pokračovat k platbě",
+        "success": {
+            "notFound": "Objednávka nebyla nalezena.",
+            "title": "Objednávka úspěšně vytvořena!",
+            "desc": "Vaše objednávka byla úspěšně zadána. Děkujeme vám za váš nákup!"
+        }
+    },
+    "Orders": {
+        "orderId": "ID objednávky",
+        "country": "Země",
+        "address": "Adresa",
+        "postalCode": "PSČ",
+        "phone": "Telefon",
+        "packet": "Vyzvedávací místo",
+        "total": "Celkem",
+        "status": {
+            "completed": "Dokončeno",
+            "pending": "Čekající",
+            "failed": "Selhalo"
+        }
+    },
+    "Profile": {
+        "social": "Sociální sítě",
+        "link": "Odkazy",
+        "video": "Videa",
+        "optional": "Volitelné",
+        "info": "pro vytvoření profilu podle vašich potřeb",
+        "save": "Uložit změny",
+        "user": {
+            "setup": "Nastavení vašeho profilu",
+            "alias": "Alias (used in URL)",
+            "required": "Povinné",
+            "info": "nutné i pro nákup",
+            "image": "Profilový obrázek",
+            "name": "Jméno",
+            "surname": "Příjmení",
+            "country": "Země",
+            "city": "Město",
+            "bio": "Bio"
+        },
+        "socials": {
+            "placeholder": "Zadejte adresu URL položky"
+        },
+        "links": {
+            "name": "Název odkazu",
+            "url": "Adresa URL odkazu",
+            "desc": "Popis položky",
+            "namePlaceholder": "Zadejte název odkazu",
+            "urlPlaceholder": "Zadejte adresu URL odkazu",
+            "descPlaceholder": "Zadejte popis položky"
+        },
+        "videos": {
+            "urlPlaceholder": "Adresa URL videa"
+        }
+    }
+}

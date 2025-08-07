@@ -1,0 +1,408 @@
+{
+  "Header": {
+    "navigation": {
+      "editor": "Card Editor",
+      "pricing": "Pricing",
+      "about": "About Us",
+      "faq": "FAQ"
+    },
+    "controls": {
+      "account": {
+        "login": "Log in",
+        "register": "Register"
+      },
+      "language": "Preferred language:",
+      "basket": "Cart",
+      "orders": "Orders",
+      "profile": "My Profile",
+      "logout": "Log out"
+    }
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "links": {
+      "policy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "aboutUs": {
+      "address": "Address",
+      "contact": "Contact"
+    }
+  },
+  "Reset": {
+    "title": "Reset your password.",
+    "desc": "Enter your password and confirm it.",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "reset": "Reset password",
+    "account2": "want to log in?",
+    "success": "Your password has been successfully reset."
+  },
+  "Login": {
+    "title": "Login to the system.",
+    "desc": "Enter your login credentials.",
+    "email": "Email",
+    "password": "Password",
+    "forgottenPassword": "Forgotten password",
+    "login": "Log in",
+    "sendEmail": "Send email for password reset",
+    "forgotTitle": "Forgotten password",
+    "forgotDesc": "Enter your email address to receive a link to reset your password.",
+    "emailSent": "An email has been sent to your address.",
+    "noAccount1": "Don't have an account yet and ",
+    "noAccount2": "want to register?",
+    "account2": "want to log in?",
+    "alreadyLogged": "You are already logged in.",
+    "validation": {
+      "email": "Invalid email",
+      "password": "Password must be at least 5 characters",
+      "error": "Invalid credentials"
+    }
+  },
+  "Register": {
+    "title": "Create an account.",
+    "desc": "To use our services, create an account with us.",
+    "name": "First name",
+    "surname": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "terms": "I agree to the terms *",
+    "personalData": "I agree to the processing of personal data *",
+    "register": "Register",
+    "account1": "Already have an account and ",
+    "account2": "want to log in?",
+    "alreadyRegistered": "You are already registered.",
+    "validation": {
+      "name": "First name must be at least 3 characters",
+      "surname": "Last name must be at least 4 characters",
+      "email": "Invalid email",
+      "password": "Password must be at least 5 characters",
+      "terms": "You must agree to the terms",
+      "personalData": "You must agree to the processing of personal data"
+    }
+  },
+  "Editor": {
+    "cards": {
+      "cherry": "Cherry",
+      "sapeli": "Sapeli",
+      "rosewood": "Rosewood",
+      "maple": "Maple",
+      "black_walnut": "Black Walnut",
+      "bamboo": "Bamboo"
+    },
+    "tools": {
+      "title": "Tools"
+    },
+    "text": {
+      "title": "Set up your card",
+      "text": "text",
+      "fontStyle": "Font style",
+      "fontSize": "Font size",
+      "fontWeight": "Font weight",
+      "curveAngle": "Angle",
+      "letterSpacing": "Letter spacing"
+    },
+    "info": {
+      "part_1": "Please note that ",
+      "part_bold": "the back side of the card is reserved for the QR code",
+      "part_2": ", so you can only edit the front side of the card."
+    },
+    "delete_object": "DELETE SELECTED OBJECT",
+    "button": "Save and Continue",
+    "reset_button": "Reset"
+  },
+  "Landing": {
+    "contact": "Thank you for contacting us! We will get back to you soon.",
+    "hero": {
+      "title": "<highlight>Share</highlight> who you are, what you do, and where you're going – <highlight>faster and more efficiently</highlight> than ever before.",
+      "subtitle": "Whether you are an individual building your personal brand or a company looking to <highlight>effectively</highlight> present your team – <highlight>QuickPass helps you</highlight> share everything important and always up to date."
+    },
+    "whyUs": {
+      "stepForward": "Are you hesitating whether it's time to take a step forward?",
+      "title": "Why QuickPass?",
+      "desc": "Our modern platform combines the benefits of a digital business card and a link-in-bio hub. It allows you to easily “QuickPass” contacts, links, projects, and your personal brand – online via a link or in person with an elegant NFC card.",
+      "features": {
+        "fast": "fast",
+        "eco": "eco-friendly",
+        "modern": "modern",
+        "upToDate": "always up to date"
+      },
+      "orderNow": "Order a card"
+    },
+    "pros": {
+      "onePlace": {
+        "title": "Everything in one place",
+        "desc": "Contacts, social networks, websites, and projects – clear, stylish, and always up to date."
+      },
+      "sharing": {
+        "title": "Sharing in seconds",
+        "desc": "Just tap the card or send a link. No delays, no apps."
+      },
+      "style": {
+        "title": "Your style, your impression",
+        "desc": "Visually customizable profile and card that reflect your personality and professionalism."
+      }
+    },
+    "ourSolution": {
+      "subtitle": "Our modern solution",
+      "title": "Unique solution for everyone",
+      "desc": "We connect innovation with practicality",
+      "features": {
+        "eco": "Eco",
+        "digital": "Digital",
+        "practical": "Practical",
+        "modern": "Modern"
+      }
+    },
+    "card": {
+      "title": "Elegant NFC business card",
+      "subtitle": "Quality workmanship that leaves an impression.",
+      "desc": "Made from quality wood, custom engraved with selected elegance – lightly finished to highlight the natural grain and smooth surface.",
+      "premium": {
+        "title": "Premium workmanship",
+        "desc": "Engraved in detail, each piece is unique. Fineness, precision, style."
+      },
+      "sharing": {
+        "title": "Lightning-fast sharing",
+        "desc": "Tap/scan – no apps, no delays. Instantly shared information."
+      },
+      "learnMore": "Learn more",
+      "register": "Register",
+      "openEditor": "Open editor"
+    },
+    "nfc": {
+      "title": "Get your NFC card today!",
+      "desc": "Experience seamless sharing with our NFC card - order now and elevate your networking game!",
+      "orderNow": "Order now",
+      "learnMore": "Learn more"
+    },
+    "faq": {
+      "title": "FAQ",
+      "desc": "Find answers to your questions about our NFC card and its features.",
+      "moreQuestions": "Do you have more questions?",
+      "help": "We are here to help you!",
+      "contact": "Contact us",
+      "takeALook": "Check out our FAQ",
+      "questions": {
+        "whatIsNfc": {
+          "question": "What is NFC and how does it work?",
+          "answer": "NFC (Near Field Communication) is a technology that enables wireless data transfer over a very short distance – just bring the devices close together and a connection is made within a second. It is used, for example, in contactless payments, building access, or modern sharing of contacts via smart business cards."
+        },
+        "whatDevicesItSupports": {
+          "question": "Which devices support NFC?",
+          "answer": "Most modern smartphones support NFC today, including: iPhones (models from iPhone 7 and up) Location: The NFC antenna is usually on the back of the phone, often at the top or in the middle. Android phones (Samsung, Google Pixel, Xiaomi, Huawei, and others) Location: The NFC antenna is usually on the back of the device, mostly at the top or in the middle. Smartwatches (e.g., Apple Watch, Samsung Galaxy Watch)"
+        },
+        "isAppNeeded": {
+          "question": "Is an app required?",
+          "answer": "No, you don't need any app to read the NFC business card. QuickPass works seamlessly on any smartphone with NFC support."
+        },
+        "isItFree": {
+          "question": "Is QuickPass free?",
+          "answer": "Yes, anyone can use a QuickPass account completely free. See the “pricing” section for a comparison of membership benefits."
+        },
+        "delivery": {
+          "question": "How does delivery work?",
+          "answer": "All NFC products come pre-programmed with a link to your digital profile. Goods are shipped via Zásilkovna. Orders are handed over to the carrier within 24 hours. Delivery in CZ/SK within 7 business days."
+        }
+      }
+    },
+    "contactForm": {
+      "title": "Contact us",
+      "desc": "Fill out the form with your question and we will contact you as soon as possible.",
+      "name": "First name",
+      "enterName": "Your first name",
+      "surname": "Last name",
+      "enterSurname": "Your last name",
+      "email": "Email",
+      "enterEmail": "Your email",
+      "phone": "Phone",
+      "enterPhone": "Your phone",
+      "topic": "Select topic",
+      "enterTopic": "Choose a topic...",
+      "message": "Message",
+      "enterMessage": "Write your message",
+      "terms": "I agree to the terms and conditions",
+      "submit": "Send",
+      "topics": {
+        "general": "General inquiries",
+        "support": "Support",
+        "business": "Business cooperation",
+        "feedback": "Feedback",
+        "other": "Other"
+      },
+      "validations": {
+        "name": "First name must be at least 3 characters",
+        "surname": "Last name must be at least 4 characters",
+        "email": "Invalid email",
+        "phone": "Invalid phone number",
+        "topic": "You must select a topic",
+        "message": "Message must be at least 10 characters",
+        "terms": "You must agree to the terms and conditions"
+      }
+    },
+    "profiles": {
+      "emily": {
+        "desc": "This NFC card has changed the way I share my information. It's convenient and versatile for every occasion!",
+        "title": "Marketing Manager, TechCo"
+      },
+      "clark": {
+        "desc": "This card changed my way of sharing. It's practical and versatile for every occasion!",
+        "title": "Owner, TechCo"
+      }
+    }
+  },
+  "Pricing": {
+    "free": {
+      "title": "Free",
+      "pros": {
+        "url": "Active profile with custom URL",
+        "edit": "Edit photo, name, bio, contact",
+        "unlimitedUrls": "Unlimited number of links",
+        "moreVideos": "Ability to add videos, social networks",
+        "rearrange": "Design rearrangement of blocks",
+        "qr": "Basic QR code for download"
+      },
+      "owned": "Already owned",
+      "button": "Register"
+    },
+    "pro": {
+      "title": "Pro",
+      "pros": {
+        "allFree": "Everything from Free version",
+        "upcoming": "Coming soon",
+        "profiles": "3 separate profiles per account",
+        "specific": "Personal / Work / Artistic"
+      },
+      "buy": "Buy now",
+      "button": "Log in"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "pros": {
+        "contact": "Contact us for individual pricing"
+      },
+      "button": "Contact us"
+    }
+  },
+  "About": {
+    "title": "Why work with us and who are we?",
+    "subtitle": "Explain what your company is working on and what value you provide to your customers.",
+    "story": {
+      "subtitle": "Our story",
+      "title": "Tells you about our story and mission",
+      "desc": "We are a company specializing in modern digital business cards. We offer a unique solution connecting physical business cards with the digital world – our cards contain an NFC chip or QR code that allows instant access to your contact information, websites, or social media profiles. Simple, practical, and elegant – the future of business cards is here!"
+    }
+  },
+  "FAQ": {
+    "title": "FAQs",
+    "desc": "Here you will find answers to the most frequently asked questions about our NFC cards, their use, and possibilities. If you do not find the answer to your question, do not hesitate to contact us.",
+    "questions": {
+      "whatIsNfc": {
+        "question": "What is NFC and how does it work?",
+        "answer": "NFC (Near Field Communication) is a technology that enables wireless data transfer over a very short distance – just bring the devices close together and a connection is made within a second. It is used, for example, in contactless payments, building access, or modern sharing of contacts via smart business cards."
+      },
+      "whatDevicesItSupports": {
+        "question": "Which devices support NFC?",
+        "answer": "Most modern smartphones support NFC today, including: iPhones (models from iPhone 7 and up) Location: The NFC antenna is usually on the back of the phone, often at the top or in the middle. Android phones (Samsung, Google Pixel, Xiaomi, Huawei, and others) Location: The NFC antenna is usually on the back of the device, mostly at the top or in the middle. Smartwatches (e.g., Apple Watch, Samsung Galaxy Watch)"
+      },
+      "isAppNeeded": {
+        "question": "Is an app required?",
+        "answer": "No, you don't need any app to read the NFC business card. QuickPass works seamlessly on any smartphone with NFC support."
+      },
+      "isItFree": {
+        "question": "Is QuickPass free?",
+        "answer": "Yes, anyone can use a QuickPass account completely free. See the “pricing” section for a comparison of membership benefits."
+      },
+      "delivery": {
+        "question": "How does delivery work?",
+        "answer": "All NFC products come pre-programmed with a link to your digital profile. Goods are shipped via Zásilkovna. Orders are handed over to the carrier within 24 hours. Delivery in CZ/SK within 7 business days."
+      }
+    },
+    "moreQuestions": "Do you have more questions?",
+    "info": "If you need more information or have a specific question, we are available by email or phone. We will be happy to advise you and help you choose and use our products.",
+    "button": "Contact us"
+  },
+  "Order": {
+    "packet": "Select pick-up point",
+    "order": "Your order",
+    "contact": "Contact details",
+    "delivery": "Delivery details",
+    "delivery_price": "Delivery price",
+    "shipping": "Shipping method",
+    "email": "Email",
+    "name": "First name",
+    "surname": "Last name",
+    "country": "Country",
+    "address": "Address",
+    "postalCode": "Postal code",
+    "phone": "Phone",
+    "validations": {
+      "country": "Country must be selected",
+      "name": "First name must be at least 3 characters",
+      "surname": "Last name must be at least 4 characters",
+      "address": "Address must be at least 5 characters",
+      "postalCode": "Postal code must be at least 5 characters",
+      "phone": "Invalid phone number"
+    },
+    "logIn": "You must be logged in to order a card.",
+    "loginButton": "Log in",
+    "registerButton": "Register",
+    "noItems": "You have no items in your cart.",
+    "info": "Information",
+    "total": "Total",
+    "checkout": "Proceed to payment",
+    "success": {
+      "notFound": "Order not found.",
+      "title": "Order successfully created!",
+      "desc": "Your order has been successfully placed. Thank you for your purchase!"
+    }
+  },
+  "Orders": {
+    "orderId": "Order ID",
+    "country": "Country",
+    "address": "Address",
+    "postalCode": "Postal code",
+    "phone": "Phone",
+    "packet": "Pick-up point",
+    "total": "Total",
+    "status": {
+      "completed": "Completed",
+      "pending": "Pending",
+      "failed": "Failed"
+    }
+  },
+  "Profile": {
+    "social": "Social networks",
+    "link": "Links",
+    "video": "Videos",
+    "optional": "Optional",
+    "info": "to create a profile according to your needs",
+    "save": "Save changes",
+    "user": {
+      "setup": "Set up your profile",
+      "alias": "Alias (used in URL)",
+      "required": "Required",
+      "info": "required also for purchase",
+      "image": "Profile image",
+      "name": "First name",
+      "surname": "Last name",
+      "country": "Country",
+      "city": "City",
+      "bio": "Bio"
+    },
+    "socials": {
+      "placeholder": "Enter the item's URL"
+    },
+    "links": {
+      "name": "Link name",
+      "url": "Link URL",
+      "desc": "Item description",
+      "namePlaceholder": "Enter link name",
+      "urlPlaceholder": "Enter link URL",
+      "descPlaceholder": "Enter item description"
+    },
+    "videos": {
+      "urlPlaceholder": "Video URL"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="587" height="440" viewBox="0 0 587 440" xml:space="preserve">
+<desc>Created with Fabric.js 6.6.1</desc>
+<defs>
+</defs>
+
+
+
+<g clip-path="url(#CLIPPATH_7)">
+<g transform="matrix(2.061 0 0 2.061 167.707 270.293)">
+<clipPath id="CLIPPATH_7">
+	<rect transform="matrix(1 0 0 1 294 220.5)" x="-273.5" y="-200" rx="20" ry="20" width="547" height="400"/>
+</clipPath>
+	<image style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAAAXNSR0IArs4c6QAAA5JJREFUaEPtW0toE1EUPfeRTRWF6EbcuFCKm840DfhB8IPiX0FwqSKIKIqIX9DiRpEo1YUbleJGuxVExP8HtQUF0ckMjSvBhYiCYHCj2E5mnBvelGdI2qSTSV9gHmSRl/duz7nnzruZ6Qmh9tgOIAugW77mjLN2Kj76DiAvX+8B3K4GgqpMzgBwB8AHAD+VIBxQp8EJD5M/G4ABYBuA3yrISoKrJTle+FwnNnVgWSuxbwTwKlyvEmRyhwPlttYRTOcl9wBcBvCSQYYEuSy/ApipM/JsNjt/dHT0lBBiAeP0PO8TgPOO43yuwM1lymX7JyT4DEBO47IkwzAuCiGO+b4vVDKe55VSqVTOsqwzyvw6AEcArGeCfFouCi7Ok7qqZxhGPxHtDfH5vv+mXH5ES5W5S47jnFA4cJkOMUFW7heACzoSzGazq1zXfaFiS6fTaX5fLBaL6rzrut2FQsGWc70AOpjgQwBXADzSkaBhGDeIaE89BH3fzzmOc1qu3QDgEBP8BiADQLc+V8ZpGMZbIloMYMC27V3VRDBN8xaAnQCe2rbN7YIH90mLCfrKaaqdiIZhDBHRsvEIdnV1DQghdgghBi3LWq6Q8NuBYN0lSkTX8vn8gXYjuISIyqdmOGodMgB6bNu22oogg81kMtc9z9sXAi+VSleFEIKI9ittos9xnMpWp3+JSgJkmmaf53lHmZeqJhG5RHTOsqyzVQ6QtiFYxm6aZmepVOpNpVLzJJmPruvmhoeHv9Q4HduL4CSO+ITgJJKm1ZZEwShydAKY20CA8g1qk0esCvYHN9Fjtzh1AK/2fKiObeMuSQhGzaC6f3PwGJKfl/C4CWB3M4Pr0AcTgjEoGus1WIk3UTBRsPEMJCXaeM5q70iuwWZmU8ZKSrSZSU1KtJnZnIoSjQH/hCFbeg1OiCaGBQnBGJLa0pCJgi1Ndwx/LFEwhqS2NGSi4H/pNk2T/xs85cO27XofMTamYLsS1NqEEKFcxkwIWttIIhBkU95B7Y1AEQiOGYHYysU+FNUGFSGuNlvZyvU6PI0eSwviE23gRQNSLk8Am0KC04KJHwCmR4urze6/gWBsER1R+8kKAMcBbNEG5uSA3JfGwkHeXtkwVwbWygfS+8xl206Dy5K95msAlMlVI8hzHXJhQZrS2ZzO7iHdzHrc53qkkXAWgIVSmBFVlfG+8rAxnX9WEAbR8WcFYfLfBUTvViu3f50iOwVMmBASAAAAAElFTkSuQmCC" x="-28" y="-28" width="56" height="56"/>
+</g>
+</g>
+<g style="" id="curvedText" clip-path="url(#CLIPPATH_8)"  >
+<g transform="matrix(1 0 0 1 447.5 291)"  >
+<clipPath id="CLIPPATH_8" >
+	<rect transform="matrix(1 0 0 1 294 220.5)" x="-273.5" y="-200" rx="20" ry="20" width="547" height="400" />
+</clipPath>
+<defs>
+          <path id="textOnPath6dke1rde3" d="M 0 -100 C 55.22847498307934 -100 100 -55.22847498307937 100 -2.842170943040401e-14 C 100 55.22847498307931 55.228474983079366 99.99999999999997 2.842170943040401e-14 100 C -55.228474983079344 100 -100 55.22847498307934 -100 0 C -100 -55.22847498307934 -55.228474983079344 -100 0 -100" />
+        </defs><text
+                font-family="Georgia"
+                fill="rgb(0,0,0)"
+                font-size="24"
+                font-style="normal"
+                font-weight="400"
+                opacity="1"
+                letter-spacing="24"
+                >
+                  <textPath text-anchor="start"
+                  dominant-baseline="middle"
+                  startOffset="0"
+                  href="#textOnPath6dke1rde3"
+                  xlink:href="#textOnPath6dke1rde3">
+                  <tspan dy="0">Placeholder Text</tspan>
+                  </textPath>
+                </text></g>
+</g>
+<g style="" id="curvedText" clip-path="url(#CLIPPATH_9)"  >
+<g transform="matrix(1 0 0 1 353.5 120)"  >
+<clipPath id="CLIPPATH_9" >
+	<rect transform="matrix(1 0 0 1 294 220.5)" x="-273.5" y="-200" rx="20" ry="20" width="547" height="400" />
+</clipPath>
+<defs>
+          <path id="textOnPath3zjstoqmz" d="M -280 0 Q -130 -100 20 0 Q 170 100 280 0" />
+        </defs><text
+                font-family="Arial"
+                fill="rgb(0,0,0)"
+                font-size="16"
+                font-style="normal"
+                font-weight="400"
+                opacity="1"
+                letter-spacing="16"
+                >
+                  <textPath text-anchor="start"
+                  dominant-baseline="middle"
+                  startOffset="0"
+                  href="#textOnPath3zjstoqmz"
+                  xlink:href="#textOnPath3zjstoqmz">
+                  <tspan dy="0">Placeholder Text</tspan>
+                  </textPath>
+                </text></g>
+</g>
+</svg>
