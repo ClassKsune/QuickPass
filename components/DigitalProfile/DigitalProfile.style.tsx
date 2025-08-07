@@ -5,13 +5,9 @@ import styled from "styled-components";
 export const DigitalProfileWrapperStyled = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 400px;
+    width: max-content;
+    max-width: 100%;
     margin-inline: auto;
-    
-    @media (max-width: 768px) {
-        max-width: 100%;
-    }
 `
 
 export const DigitalProfileImageWrapper = styled.div`
@@ -132,7 +128,6 @@ export const DigitalProfileImage = styled(Image)<{ $set: boolean }>`
 export const DigitalProfileContentStyled = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${Colors.white};
     box-shadow: 0px 4px 16px 0px #00000040;
     padding: ${Spacing.xl} ${Spacing.md};
     border-bottom-left-radius: ${BorderRadius.md};
@@ -186,7 +181,10 @@ export const DigitalProfileBioStyled = styled.div`
 `
 
 export const DigitalProfileJobInfoStyled = styled.div`
-    margin-bottom: ${Spacing.xs};
+    padding-left: ${Spacing.lg};
+    padding-block: ${Spacing.xs};
+    border-left: 4px solid ${Colors.gray};
+    margin-bottom: ${Spacing.sm};
 
     h4 {
         margin: 0;
@@ -232,44 +230,28 @@ export const DigitalProfileTitleWrapperStyled = styled.div`
 
 export const DigitalProfileSocialsStyled = styled.div`
     display: flex;
-    flex-direction: column;
-    gap: ${Spacing.sm};
-    margin-bottom: ${Spacing.md};
+    column-gap: ${Spacing.md};
+    row-gap: ${Spacing.sm};
 `
 
 export const DigitalProfileSocialStyled = styled.a`
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: ${Spacing.sm};
-    padding: ${Spacing.xs} 0;
-    text-decoration: none;
-    color: ${Colors.black};
-    transition: opacity 0.2s ease;
+    background-color: ${Colors.black};
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    svg {
+        color: ${Colors.white};
+        width: 18px;
+        height: 18px;
+    }
 
     &:hover {
-        opacity: 0.7;
-    }
-
-    .social-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: ${Colors.black};
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        flex-shrink: 0;
-
-        svg {
-            color: ${Colors.white};
-            width: 18px;
-            height: 18px;
-        }
-    }
-
-    .social-label {
-        font-size: 14px;
-        font-weight: 500;
-        color: ${Colors.black};
+        background-color: ${Colors.primary};
     }
 `
