@@ -101,9 +101,10 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                         ))}
                     </DigitalProfileSocialsStyled>
                 )}
-                {(profile.position || profile.company) && (
-                    <DigitalProfileJobInfoStyled>
-                        {profile.position && profile.company && (
+                {profile.bio && (
+                    <DigitalProfileBioStyled>
+                         <DigitalProfileJobInfoStyled>
+                            {profile.position && profile.company && (
                             <h4>{`${profile.position}, ${profile.company}`}</h4>
                         )}
                         {profile.position && !profile.company && (
@@ -112,10 +113,7 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                         {!profile.position && profile.company && (
                             <h4>{profile.company}</h4>
                         )}
-                    </DigitalProfileJobInfoStyled>
-                )}
-                {profile.bio && (
-                    <DigitalProfileBioStyled>
+                        </DigitalProfileJobInfoStyled>
                         <p>{profile.bio}</p>
                     </DigitalProfileBioStyled>
                 )}
