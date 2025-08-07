@@ -115,11 +115,11 @@ function legacyCopyToClipboard(text: string): Promise<boolean> {
  */
 function showManualCopyFallback(text: string, message: string): void {
   // Create a modal or alert with selectable text
-  if (window.prompt) {
+  try {
     // Use prompt as a fallback - user can select and copy
     window.prompt(message, text);
-  } else {
-    // Last resort - just alert
+  } catch (err) {
+    // Last resort - just alert (in case prompt is blocked)
     alert(`${message}\n\n${text}`);
   }
 }
@@ -143,7 +143,7 @@ function isMobileDevice(): boolean {
 export function isClipboardSupported(): boolean {
   return !!(
     (navigator.clipboard && window.isSecureContext) ||
-    document.queryCommandSupported?.('copy') ||
+    (typeof document.queryCommandSupported === 'function' && document.queryCommandSupported('copy')) ||
     navigator.share
   );
 }
@@ -152,7 +152,7 @@ export function isClipboardSupported(): boolean {
  * Get the best available clipboard method
  */
 export function getClipboardMethod(): 'clipboard-api' | 'execCommand' | 'web-share' | 'manual' | 'none' {
-  if (navigator.share && isMobileDevice()) {
+  if (isMobileDevice()) {
     return 'web-share';
   }
   
@@ -160,13 +160,10 @@ export function getClipboardMethod(): 'clipboard-api' | 'execCommand' | 'web-sha
     return 'clipboard-api';
   }
   
-  if (document.queryCommandSupported?.('copy')) {
+  if (typeof document.queryCommandSupported === 'function' && document.queryCommandSupported('copy')) {
     return 'execCommand';
   }
   
-  if (window.prompt) {
-    return 'manual';
-  }
-  
-  return 'none';
+  // Always available as last resort
+  return 'manual';
 }
