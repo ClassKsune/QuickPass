@@ -136,7 +136,7 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
 
 const UserWrapperStyled = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: auto;
     padding: ${Spacing.sm} ${Spacing.lg} ${Spacing.md} ${Spacing.lg};
     border: 1px solid ${Colors.black};
@@ -152,24 +152,41 @@ const UserWrapperStyled = styled.div`
         grid-column: 1 / -1;
         text-align: center;
     }
+
+    @media (max-width: 480px) {
+        padding: ${Spacing.sm};
+    }
 `;
 
 const AliasWrapper = styled.div`
     display: flex;
+    flex-direction: row;
     align-items: flex-end;
     margin-bottom: ${Spacing.sm};
+    gap: ${Spacing.sm};
 
     .mantine-TextInput-root {
         flex: 1;
     }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: stretch;
+
+        button {
+            width: 100%;
+        }
+    }
 `;
+
 
 const UserHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: ${Spacing.sm};
-
+    flex-wrap: wrap;
+    gap: ${Spacing.sm};
 
     h1 {
         margin: 0;
@@ -178,10 +195,10 @@ const UserHeader = styled.div`
     }
 
     button {
-        align-self: flex-end;
         background-color: ${Colors.white};
         border: 2px solid ${Colors.black};
         transition: background-color 0.3s ease;
+
         &:hover {
             background-color: ${Colors.white};
         }
@@ -191,5 +208,15 @@ const UserHeader = styled.div`
         gap: ${Spacing.sm};
         color: ${Colors.black};
         font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button {
+            align-self: stretch;
+            width: 100%;
+        }
     }
 `;

@@ -10,6 +10,7 @@ export const ProfileWrapperStyled = styled.div`
     border-radius: 40px;
     padding: 24px;
     overflow: hidden;
+    justify-content: center;
     width: 100%;
     max-width: 800px;
     height: max-content;
@@ -38,7 +39,7 @@ export const SocialsAndLinksWrapperStyled = styled.div`
 
 export const ProfileAndDigitalWrapperStyled = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-block: ${Spacing.xl};
     column-gap: ${Spacing.xl};
     row-gap: ${Spacing.md};
@@ -46,12 +47,31 @@ export const ProfileAndDigitalWrapperStyled = styled.div`
 
     ${DigitalProfileWrapperStyled} {
         max-width: 500px;
+        width: 100%;
     }
 
     @media (max-width: 1665px) {
-        justify-content: center;
+
+        .test {
+            width: max-content;
+        }
     }
-`
+
+    @media (max-width: 1412px) {
+        flex-direction: column;
+        align-items: stretch;
+        align-content: center;
+        .test {
+            width: 80%;
+            margin-left: 0;
+        }
+
+        ${DigitalProfileWrapperStyled} {
+            order: -1;
+        }
+    }
+`;
+
 
 export const ProfileWrapper = styled.div`
     display: flex;
@@ -62,4 +82,13 @@ export const ProfileWrapper = styled.div`
         margin-left: auto;
         padding-inline: 3vw;
     }
-`
+
+    @media (max-width: 1412px) {
+        margin: 0 5vw;
+        & > button {
+            width: 100%;
+            margin-left: 0;
+            margin-top: ${Spacing.md};
+        }
+    }
+`;

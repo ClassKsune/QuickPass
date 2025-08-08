@@ -27,7 +27,7 @@ export const Profile = ({ profile }: { profile: ProfileState }) => {
   return (
     <ProfileWrapper>
       <ProfileAndDigitalWrapperStyled>
-        <ProfileWrapperStyled>
+        <ProfileWrapperStyled className="test">
           <User profile={user} setProfile={setUser} />
           <h2>{t("optional")} <span>({t("info")})</span></h2>
           <SocialsAndLinksWrapperStyled>
