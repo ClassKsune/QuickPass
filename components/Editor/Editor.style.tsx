@@ -298,6 +298,10 @@ export const EditorControlsWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: ${Spacing.xl};
+
+  @media (max-width: 1580px) {
+    max-width: 40%;
+  }
 `
 
 export const EditorRowWrapperStyled = styled.div`
