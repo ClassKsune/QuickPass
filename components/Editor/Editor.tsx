@@ -162,7 +162,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
       evented: false,
       rx: 20,
     });
-    const clipRectImage = await FabricImage.fromURL(`/images/${wasInitialized ? CardVariantEnum.Cherry : cardVariant}.png`);
+    const clipRectImage = await FabricImage.fromURL(`/images/${wasInitialized ? CardVariantEnum.Cherry : cardVariant}.svg`);
     const imgWidth = clipRectImage.width || 1;
     const imgHeight = clipRectImage.height || 1;
     const scaleX = width / imgWidth;
@@ -507,7 +507,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
 
   const onChangeCardVariant = async (variant: CardVariantEnum) => {
     const { width, height } = editor?.canvas
-    const url = `/images/${variant}.png`
+    const url = `/images/${variant}.svg`
     const clipRectImage = editor?.canvas.getObjects().find(obj => (obj as any).id === 'cardVariantImage');
     const canvas = editor?.canvas;
     if (clipRectImage) {
@@ -728,7 +728,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
       <EditorWrapperStyled>
         <EditorVariantWrapperStyled>
           {Object.entries(CardVariantEnum).map(([key, value]) => (
-            <EditorVariantStyled key={key} $url={`/images/${value}.png`} onClick={() => onChangeCardVariant(value)} />
+            <EditorVariantStyled key={key} $url={`/images/${value}.svg`} onClick={() => onChangeCardVariant(value)} />
           ))}
         </EditorVariantWrapperStyled>
         <h3>{t(`cards.${cardVariant}`)}</h3>
