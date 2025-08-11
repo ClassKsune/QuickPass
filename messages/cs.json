@@ -15,7 +15,8 @@
             "basket": "Košík",
             "orders": "Objednávky",
             "profile": "Můj profil",
-            "logout": "Odhlásit se"
+            "logout": "Odhlásit se",
+            "share": "Sdílet"
         }
     },
     "Footer": {
@@ -397,7 +398,9 @@
             "position": "Pozice",
             "telephone": "Telefon",
             "email": "Email",
-            "bio": "Bio"
+            "bio": "Bio",
+            "share": "Sdílet",
+            "copyPopup": "Zkopírováno do schránky"
         },
         "socials": {
             "placeholder": "Zadejte adresu URL položky"

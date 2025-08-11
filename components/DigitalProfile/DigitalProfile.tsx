@@ -1,17 +1,21 @@
 import { ProfileState } from "@/types/Profile";
 import { DigitalVideosWrapperStyled, DigitalProfileBioStyled, DigitalProfileJobInfoStyled, DigitalProfileContentStyled, DigitalProfileImage, DigitalProfileImageWrapper, DigitalProfileTitleWrapperStyled, DigitalProfileWrapperStyled, DigitalLinkWrapperStyled, DigitalLinksWrapperStyled, DigitalProfileSocialsStyled, DigitalProfileSocialStyled } from "./DigitalProfile.style";
 import Image from "next/image";
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from 'react-player/youtube';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faShare, faCopy, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { Colors } from "@/utils";
+import { faMapMarkerAlt, faShare } from "@fortawesome/free-solid-svg-icons";
+import { Colors, BorderRadius } from "@/utils";
 import { SocialMediaIcon } from "./SocialMediaIcon";
 import { useState, useRef, useEffect } from "react";
 import { copyToClipboard } from "@/utils/clipboard";
+import styled from "styled-components";
+import { useTranslations } from "next-intl";
 
 export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [copied, setCopied] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
+     const t = useTranslations("Profile.user");
 
     const handleShare = async () => {
         if (typeof window === 'undefined') return;
@@ -20,19 +24,18 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
         const profileName = profile.name || 'Profile';
         
         const success = await copyToClipboard(profileUrl, {
-            useWebShare: true,
-            shareTitle: `${profileName} - QuickPass Profile`,
-            shareText: `Check out ${profileName}'s profile on QuickPass`,
-            fallbackMessage: "Copy this profile link:"
+            useWebShare: true
         });
         
         if (success) {
             console.log("Profile URL shared/copied successfully!");
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
         } else {
             console.log("Profile URL copy operation completed (manual fallback may have been used)");
         }
         
-        setIsMenuOpen(false); // Close menu after action
+        setIsMenuOpen(false);
     };
 
     const handleMenuToggle = () => {
@@ -50,12 +53,14 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
         const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
         
         const success = await copyToClipboard(profileUrl, {
-            useWebShare: false, // Force clipboard copy instead of share dialog
+            useWebShare: false,
             fallbackMessage: "Copy this profile link:"
         });
         
         if (success) {
             console.log("Profile link copied to clipboard!");
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
         } else {
             console.log("Profile link copy operation completed (manual fallback may have been used)");
         }
@@ -82,6 +87,8 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
 
     return (
         <DigitalProfileWrapperStyled>
+            {copied && <Popup>{t("copyPopup")}</Popup>}
+
             <DigitalProfileImageWrapper>
                 <DigitalProfileImage $set={!!profile.image} priority src={profile.image || '/images/image_placeholder.svg'} alt="Profile picture" width={400} height={400} />
                 <div className="menu-container" ref={menuRef}>
@@ -159,5 +166,28 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                 )}
             </DigitalProfileContentStyled>
         </DigitalProfileWrapperStyled>
-    )
-}
+    );
+};
+
+const Popup = styled.div`
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${Colors.black};
+    color: ${Colors.white};
+    padding: 10px 15px;
+    border-radius: ${BorderRadius.sm};
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
+    z-index: 9999;
+
+    @keyframes fadein {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeout {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+    }
+`;

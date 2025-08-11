@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { copyToClipboard } from "@/utils/clipboard";
+import { useState } from "react";
 
 interface ProfileProps {
     profile: ProfileState;
@@ -15,6 +16,7 @@ interface ProfileProps {
 
 export const User = ({ profile, setProfile }: ProfileProps) => {
     const t = useTranslations("Profile.user");
+    const [copied, setCopied] = useState(false);
 
     const changeItem = (field: string, value: string | null) => {
         setProfile({ ...profile, [field]: value });
@@ -27,25 +29,26 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
         const profileName = profile.name || 'Profile';
         
         const success = await copyToClipboard(profileUrl, {
-            useWebShare: true,
-            shareTitle: `${profileName} - QuickPass Profile`,
-            shareText: `Check out ${profileName}'s profile on QuickPass`,
-            fallbackMessage: "Copy this profile link:"
+            useWebShare: true
         });
         
         if (success) {
             console.log("Profile URL shared/copied successfully!");
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
         } else {
             console.log("Profile URL copy operation completed (manual fallback may have been used)");
         }
     };
 
     return (
-        <div>
+        <div style={{ position: "relative" }}>
+            {copied && <Popup>{t("copyPopup")}</Popup>}
+
             <UserHeader>
                 <h1>{t("setup")}</h1>
                 <Button onClick={handleAliasButtonClick} style={{ marginLeft: "0.5rem", alignSelf: "flex-end" }}>
-                    <span>Share</span>
+                    <span>{t("share")}</span>
                     <FontAwesomeIcon icon={faShare} />
                 </Button>
             </UserHeader>
@@ -134,6 +137,29 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
     );
 };
 
+const Popup = styled.div`
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${Colors.black};
+    color: ${Colors.white};
+    padding: 10px 15px;
+    border-radius: ${BorderRadius.sm};
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
+    z-index: 9999;
+
+    @keyframes fadein {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeout {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+    }
+`;
+
 const UserWrapperStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -178,7 +204,6 @@ const AliasWrapper = styled.div`
         }
     }
 `;
-
 
 const UserHeader = styled.div`
     display: flex;

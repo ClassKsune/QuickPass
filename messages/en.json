@@ -392,7 +392,9 @@
       "position": "Position",
       "telephone": "Phone Number",
       "email": "Email",
-      "bio": "Bio"
+      "bio": "Bio",
+      "share": "Share",
+      "copyPopup": "Copied to clipboard"
     },
     "socials": {
       "placeholder": "Enter the item's URL"
