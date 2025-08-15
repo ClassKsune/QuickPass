@@ -31,10 +31,10 @@ export function downloadVCard(profile: ProfileState) {
     }
 
     // Note
-    if (profile.bio) card.addNote(profile.bio);
+    // if (profile.bio) card.addNote(profile.bio);
 
     // Photo
-    if (profile.image) card.addPhoto(profile.image);
+    if (profile.image) card.addPhoto(profile.image, 'JPEG');
 
     const vcardString = card.toString();
     const blob = new Blob([vcardString], { type: 'text/vcard;charset=utf-8' });
