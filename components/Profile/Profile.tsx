@@ -48,6 +48,8 @@ export const Profile = ({ profile }: { profile: ProfileState }) => {
         <DigitalProfile profile={digitalProfile} />
       </ProfileAndDigitalWrapperStyled>
       <Button variant={ButtonVariant.SUCCESS} size={ButtonSize.lg} label={t("save")} onClick={handleSave} />
+
+
     </ProfileWrapper>
   )
 };

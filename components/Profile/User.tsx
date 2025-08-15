@@ -8,6 +8,8 @@ import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { copyToClipboard } from "@/utils/clipboard";
 import { useState } from "react";
+import { downloadVCard } from './vCardGen';
+import { DigitalProfile } from '../DigitalProfile/DigitalProfile';
 
 interface ProfileProps {
     profile: ProfileState;
@@ -18,6 +20,7 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
     const t = useTranslations("Profile.user");
     const [copied, setCopied] = useState(false);
 
+    
     const changeItem = (field: string, value: string | null) => {
         setProfile({ ...profile, [field]: value });
     };
@@ -133,6 +136,7 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                     maxLength={250}
                 />
             </UserWrapperStyled>
+
         </div>
     );
 };

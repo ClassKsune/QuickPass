@@ -10,6 +10,7 @@ import { useState, useRef, useEffect } from "react";
 import { copyToClipboard } from "@/utils/clipboard";
 import styled from "styled-components";
 import { useTranslations } from "next-intl";
+import { downloadVCard } from './vCardGen';
 
 export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -164,6 +165,7 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
                         ))}
                     </DigitalVideosWrapperStyled>
                 )}
+                <button className="download-vcard-button" onClick={() => downloadVCard(profile)}>Download vCard</button>
             </DigitalProfileContentStyled>
         </DigitalProfileWrapperStyled>
     );

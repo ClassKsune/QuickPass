@@ -137,6 +137,20 @@ export const DigitalProfileContentStyled = styled.div`
     border-bottom-left-radius: ${BorderRadius.md};
     border-bottom-right-radius: ${BorderRadius.md};
     row-gap: ${Spacing.md};
+
+    .download-vcard-button {
+        background: ${Colors.green};
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: ${Spacing.sm} ${Spacing.md};
+        cursor: pointer;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: ${Colors.darkBlue};
+        }
+    }
 `
 
 export const DigitalLinksWrapperStyled = styled.div`
