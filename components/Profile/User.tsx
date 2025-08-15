@@ -8,8 +8,6 @@ import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { copyToClipboard } from "@/utils/clipboard";
 import { useState } from "react";
-import { downloadVCard } from './vCardGen';
-import { DigitalProfile } from '../DigitalProfile/DigitalProfile';
 
 interface ProfileProps {
     profile: ProfileState;
