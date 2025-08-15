@@ -10,7 +10,7 @@ export const CardEditor = () => {
     const handleOrder = async (cards: any[]) => {
         dispatch(resetCart())
         cards.forEach((card: { variant: CardVariantEnum; url: string }) => {
-            dispatch(addProduct({ variant: card.variant, url: card.url, amount: 1, type: "card", price: 100 }));
+            dispatch(addProduct({ variant: card.variant, url: card.url, amount: 1, type: "card", price: 1249 }));
         })
         router.push("/order")
     };
