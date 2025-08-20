@@ -7,7 +7,9 @@ import { useTranslations } from "next-intl";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { copyToClipboard } from "@/utils/clipboard";
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import Cropper from "react-easy-crop";
+import getCroppedImg from "./GetCroppedImg";
 
 interface ProfileProps {
     profile: ProfileState;
@@ -18,21 +20,26 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
     const t = useTranslations("Profile.user");
     const [copied, setCopied] = useState(false);
 
-    
+    // --- cropper state ---
+    const [imageSrc, setImageSrc] = useState<string | null>(null);
+    const [crop, setCrop] = useState({ x: 0, y: 0 });
+    const [zoom, setZoom] = useState(1);
+    const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
+
     const changeItem = (field: string, value: string | null) => {
         setProfile({ ...profile, [field]: value });
     };
 
     const handleAliasButtonClick = async () => {
-        if (typeof window === 'undefined') return;
-        
+        if (typeof window === "undefined") return;
+
         const profileUrl = window.location.href + `/${profile.alias ?? profile.url}`;
-        const profileName = profile.name || 'Profile';
-        
+        const profileName = profile.name || "Profile";
+
         const success = await copyToClipboard(profileUrl, {
-            useWebShare: true
+            useWebShare: true,
         });
-        
+
         if (success) {
             console.log("Profile URL shared/copied successfully!");
             setCopied(true);
@@ -41,6 +48,20 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
             console.log("Profile URL copy operation completed (manual fallback may have been used)");
         }
     };
+
+    const onCropComplete = useCallback((_: any, croppedAreaPixels: any) => {
+        setCroppedAreaPixels(croppedAreaPixels);
+    }, []);
+
+    const showCroppedImage = useCallback(async () => {
+        try {
+            const croppedImg = await getCroppedImg(imageSrc!, croppedAreaPixels);
+            changeItem("image", croppedImg); // uložíme oříznutý obrázek do profilu
+            setImageSrc(null); // zavřít modal
+        } catch (e) {
+            console.error(e);
+        }
+    }, [imageSrc, croppedAreaPixels]);
 
     return (
         <div style={{ position: "relative" }}>
@@ -53,28 +74,37 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                     <FontAwesomeIcon icon={faShare} />
                 </Button>
             </UserHeader>
-            
+
             <AliasWrapper>
                 <TextInput
                     label={t("alias")}
                     placeholder={profile.url}
-                    onChange={({ target }) =>
-                        changeItem("alias", target.value.length > 0 ? target.value : null)
-                    }
+                    onChange={({ target }) => changeItem("alias", target.value.length > 0 ? target.value : null)}
                     value={profile.alias ?? ""}
                     style={{ flex: 1 }}
                 />
-                
             </AliasWrapper>
 
             <h2>
                 {t("required")} <span>({t("info")})</span>
             </h2>
             <UserWrapperStyled>
+                {/* místo přímého uploadu otevřeme cropper */}
                 <UploadButtonWithLabel
                     label={t("image")}
-                    onUpload={(res) => changeItem("image", res[0].url)}
+                    onUpload={async (res) => {
+                        // vezmeme první obrázek a načteme ho do cropperu
+                        const file = res[0];
+                        if (!file?.url) return;
+
+                        // pokud dostáváš rovnou URL → načteme ji jako dataURL
+                        const img = await fetch(file.url).then((r) => r.blob());
+                        const reader = new FileReader();
+                        reader.onload = () => setImageSrc(reader.result as string);
+                        reader.readAsDataURL(img);
+                    }}
                 />
+
                 <TextInput
                     onChange={({ target }) => changeItem("name", target.value)}
                     value={profile.name}
@@ -135,6 +165,47 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
                 />
             </UserWrapperStyled>
 
+            {/* Modal pro crop */}
+            {imageSrc && (
+                <div
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        background: "rgba(0,0,0,0.7)",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        zIndex: 1000,
+                    }}
+                >
+                    <div
+                        style={{
+                            background: "white",
+                            padding: "1rem",
+                            borderRadius: "8px",
+                            width: "400px",
+                            height: "400px",
+                            position: "relative",
+                        }}
+                    >
+                        <Cropper
+                            image={imageSrc}
+                            crop={crop}
+                            zoom={zoom}
+                            aspect={1}
+                            onCropChange={setCrop}
+                            onZoomChange={setZoom}
+                            onCropComplete={onCropComplete}
+                        />
+                        <div style={{ display: "flex", justifyContent: "flex-end", gap: "0.5rem", marginTop: "0.5rem" }}>
+                            <Button variant="default" onClick={() => setImageSrc(null)}>
+                                {t("cancel")}
+                            </Button>
+                            <Button onClick={showCroppedImage}>{t("confirm")}</Button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
@@ -147,18 +218,30 @@ const Popup = styled.div`
     color: ${Colors.white};
     padding: 10px 15px;
     border-radius: ${BorderRadius.sm};
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     animation: fadein 0.3s ease, fadeout 0.3s ease 1.7s;
     z-index: 9999;
 
     @keyframes fadein {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @keyframes fadeout {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-10px); }
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
     }
 `;
 
