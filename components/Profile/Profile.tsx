@@ -1,89 +1,55 @@
-import React, { useState, useCallback } from "react";
-import Cropper from "react-easy-crop";
-import getCroppedImg from "./GetCroppedImg";
+import { useMemo, useState } from 'react';
+import axios from 'axios';
+import { mutate } from 'swr';
+import { ProfileState } from '@/types/Profile';
+import { ProfileAndDigitalWrapperStyled, ProfileWrapper, ProfileWrapperStyled, SocialsAndLinksWrapperStyled } from './Profile.style';
+import { Socials } from './Socials';
+import { Videos } from './Videos';
+import { Links } from './Links';
+import { User } from './User';
+import { DigitalProfile } from '../DigitalProfile/DigitalProfile';
+import { Button, ButtonSize, ButtonVariant } from '../Button';
+import { useTranslations } from 'next-intl';
 
-const Profile: React.FC = () => {
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState<any>(null);
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
-  const [finalImage, setFinalImage] = useState<string | null>(null);
+export const Profile = ({ profile }: { profile: ProfileState }) => {
+  const t = useTranslations("Profile");
+  const [socials, setSocials] = useState(profile.socials);
+  const [videos, setVideos] = useState(profile.videos);
+  const [links, setLinks] = useState(profile.links);
+  const [user, setUser] = useState(profile);
+  const digitalProfile = useMemo(() => ({ ...user, socials, videos, links}), [socials, videos, links, user])
 
-  const onCropComplete = useCallback((_: any, croppedAreaPixels: any) => {
-    setCroppedAreaPixels(croppedAreaPixels);
-  }, []);
-
-  const showCroppedImage = useCallback(async () => {
-    try {
-      const croppedImg = await getCroppedImg(imageSrc!, croppedAreaPixels);
-      setFinalImage(croppedImg);
-      setImageSrc(null); // zavřít modal
-    } catch (e) {
-      console.error(e);
-    }
-  }, [imageSrc, croppedAreaPixels]);
-
-  const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      const imageDataUrl = await readFile(file);
-      setImageSrc(imageDataUrl);
-    }
+  const handleSave = () => {
+    axios.post('/api/profile', { newProfile: { ...user, socials, videos, links } })
+      .then(() => mutate('/api/profile?myAccount=true'))
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl mb-2">Nahrát profilovou fotku</h2>
-      <input type="file" onChange={onFileChange} />
-
-      {/* Modal */}
-      {imageSrc && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded-lg w-[400px] h-[400px] relative">
-            <Cropper
-              image={imageSrc}
-              crop={crop}
-              zoom={zoom}
-              aspect={1}
-              onCropChange={setCrop}
-              onZoomChange={setZoom}
-              onCropComplete={onCropComplete}
-            />
-            <div className="flex justify-end gap-2 mt-2">
-              <button
-                className="bg-gray-300 px-3 py-1 rounded"
-                onClick={() => setImageSrc(null)}
-              >
-                Zrušit
-              </button>
-              <button
-                className="bg-blue-500 text-white px-3 py-1 rounded"
-                onClick={showCroppedImage}
-              >
-                Potvrdit
-              </button>
+    <ProfileWrapper>
+      <ProfileAndDigitalWrapperStyled>
+        <ProfileWrapperStyled className="test">
+          <User profile={user} setProfile={setUser} />
+          <h2>{t("optional")} <span>({t("info")})</span></h2>
+          <SocialsAndLinksWrapperStyled>
+            <div>
+              <h3>{t("social")}</h3>
+              <Socials data={socials} setData={setSocials} />
             </div>
-          </div>
-        </div>
-      )}
+            <div>
+              <h3>{t("link")}</h3>
+              <Links data={links} setData={setLinks} />
+            </div>
+            <div>
+              <h3>{t("video")}</h3>
+              <Videos data={videos} setData={setVideos} />
+            </div>
+          </SocialsAndLinksWrapperStyled>
+        </ProfileWrapperStyled>
+        <DigitalProfile profile={digitalProfile} />
+      </ProfileAndDigitalWrapperStyled>
+      <Button variant={ButtonVariant.SUCCESS} size={ButtonSize.lg} label={t("save")} onClick={handleSave} />
 
-      {/* Výsledek */}
-      {finalImage && (
-        <div className="mt-4">
-          <h3>Oříznutý obrázek:</h3>
-          <img src={finalImage} alt="Cropped" className="mt-2 rounded-full w-40 h-40 object-cover" />
-        </div>
-      )}
-    </div>
-  );
+
+    </ProfileWrapper>
+  )
 };
-
-export default Profile;
-
-function readFile(file: File): Promise<string> {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => resolve(reader.result as string), false);
-    reader.readAsDataURL(file);
-  });
-}
