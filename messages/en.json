@@ -394,7 +394,8 @@
       "email": "Email",
       "bio": "Bio",
       "share": "Share",
-      "copyPopup": "Copied to clipboard"
+      "copyPopup": "Copied to clipboard",
+      "contact": "Add to contacts"
     },
     "socials": {
       "placeholder": "Enter the item's URL"

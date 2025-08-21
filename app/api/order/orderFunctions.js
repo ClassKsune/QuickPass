@@ -8,7 +8,7 @@ export const createOrder = (data) => Order(data)
 export const changeOrderStatus = (filter, status) => updateMongo(Order, filter, { status })
 
 export const getOrders = async (filter = {}) => {
-  const orders = await findAllMongo(Order, filter);
+  const orders = await findAllMongo(Order); // findAllMongo(Order, filter); if you want to filter only your own orders
   const ordersWithProfiles = []
   await Promise.all(
     orders.map(async (order) => {
