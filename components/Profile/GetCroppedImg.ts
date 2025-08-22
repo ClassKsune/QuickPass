@@ -4,12 +4,10 @@ export default function getCroppedImg(imageSrc: string, crop: any): Promise<stri
     image.crossOrigin = "anonymous";
     image.src = imageSrc;
 
-    image.onload = () => {
+    image.onload = async () => {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
-      if (!ctx) {
-        return reject(new Error("Canvas context not found"));
-      }
+      if (!ctx) return reject(new Error("Canvas context not found"));
 
       canvas.width = crop.width;
       canvas.height = crop.height;
@@ -26,15 +24,32 @@ export default function getCroppedImg(imageSrc: string, crop: any): Promise<stri
         crop.height
       );
 
-      canvas.toBlob((blob) => {
+      canvas.toBlob(async (blob) => {
         if (!blob) return reject(new Error("Canvas is empty"));
-        const fileUrl = URL.createObjectURL(blob);
-        resolve(fileUrl);
+
+        try {
+          const formData = new FormData();
+          formData.append("file", blob, "cropped.jpg");
+
+          // Upload na utfs.io (uploadthing storage)
+          const res = await fetch("https://uploadthing.com/api/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!res.ok) {
+            return reject(new Error("Upload failed"));
+          }
+
+          const data = await res.json();
+          // data.url obsahuje URL na utfs.io
+          resolve(data.url);
+        } catch (err) {
+          reject(err);
+        }
       }, "image/jpeg");
     };
 
-    image.onerror = (err) => {
-      reject(err);
-    };
+    image.onerror = (err) => reject(err);
   });
 }
