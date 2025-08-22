@@ -1,12 +1,12 @@
 import { BorderRadius, Colors } from "@/utils";
-import { UploadButton } from "@/utils/uploadThing";
+import { UploadButton, uploadFiles } from "@/utils/uploadThing"; // důležité!
 import { faCloudUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Flex } from "@mantine/core";
 import styled from "styled-components";
 import Cropper from "react-easy-crop";
 import { useState, useCallback } from "react";
-import getCroppedImg from "./GetCroppedImg";
+import getCroppedImg from "./getCroppedImg";
 
 export const UploadButtonWithLabel = ({
   label,
@@ -27,8 +27,17 @@ export const UploadButtonWithLabel = ({
   const handleSave = useCallback(async () => {
     if (!imageSrc || !croppedAreaPixels) return;
     try {
-      const croppedImage = await getCroppedImg(imageSrc, croppedAreaPixels);
-      onUpload([{ url: croppedImage }]); // pošleme výsledek
+      // dostaneme File z canvasu
+      const croppedFile = await getCroppedImg(imageSrc, croppedAreaPixels);
+
+      // nahrajeme ho přes uploadthing endpoint
+      const res = await uploadFiles("imageUploader", {
+        files: [croppedFile],
+      });
+
+      // zavoláme původní onUpload se stejným formátem jako UploadButton
+      onUpload(res.map((r: any) => ({ url: r.url })));
+
       setImageSrc(null); // reset editoru
     } catch (err) {
       console.error(err);
@@ -46,7 +55,7 @@ export const UploadButtonWithLabel = ({
           <UploadButton
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
-              setImageSrc(res[0].url);
+              setImageSrc(res[0].url); // nejdřív si zobrazíme pro crop
             }}
             content={{
               button: ({ ready, isUploading }) => {
