@@ -6,7 +6,7 @@ import { Flex } from "@mantine/core";
 import styled from "styled-components";
 import Cropper from "react-easy-crop";
 import { useState, useCallback } from "react";
-import getCroppedImg from "./getCroppedImg";
+import getCroppedImg from "./GetCroppedImg";
 
 export const UploadButtonWithLabel = ({
   label,
