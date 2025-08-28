@@ -378,6 +378,7 @@
     "optional": "Optional",
     "info": "to create a profile according to your needs",
     "save": "Save changes",
+    "colors": "resr",
     "user": {
       "setup": "Set up your profile",
       "alias": "Alias (used in URL)",
@@ -395,7 +396,8 @@
       "bio": "Bio",
       "share": "Share",
       "copyPopup": "Copied to clipboard",
-      "contact": "Add to contacts"
+      "contact": "Add to contacts",
+      "profileColors": "Barvy profilu"
     },
     "socials": {
       "placeholder": "Enter the item's URL"

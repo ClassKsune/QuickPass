@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server'
 import { dbConnect } from '@/utils/dbMongo'
 import { protectRoute } from '@/utils/protectRoute'
+import Account from '@/models/Account'
 import { createAccount, getAccounts, getAccount } from '@/app/api/account/accountFunctions'
 import { createProfile } from '@/app/api/profile/profileFunctions'
 
 const databaseConnection = dbConnect()
 
 export async function GET(req) {
-  // Get all accounts
   const errorResponse = await protectRoute(req, ["admin"])
   if (errorResponse) return errorResponse
 
@@ -22,7 +22,6 @@ export async function GET(req) {
 }
 
 export async function POST(req) {
-  // Log in
   const { email, password } = await req.json()
   try {
     await databaseConnection
@@ -35,20 +34,34 @@ export async function POST(req) {
 }
 
 export async function PUT(req) {
-  // Create account
   const { password, email, name, surname } = await req.json()
+  await databaseConnection
+
   try {
-    await databaseConnection
-    const account = await createAccount({ password, email, name, surname  })
-    if (!account) return NextResponse.json({ error: 'Account creation failed' }, { status: 400 })
+    // createAccount vrací jen dokument, neuložený v DB
+    const accountDoc = createAccount({ password, email, name, surname })
+    if (!accountDoc) {
+      return NextResponse.json({ error: 'Account creation failed' }, { status: 400 })
+    }
 
-    const profile = await createProfile({ accountId: account._id, name, surname })
-    if (!profile) return NextResponse.json({ error: 'Profile creation failed' }, { status: 400 })
+    // Uložíme účet do DB
+    const account = await accountDoc.save()
 
-    account.save()
-    profile.save()
+    // Pokusíme se vytvořit profil
+    try {
+      const profileDoc = await createProfile({ accountId: account._id, name, surname })
+      if (!profileDoc) {
+        await Account.findByIdAndDelete(account._id) // rollback
+        return NextResponse.json({ error: 'Profile creation failed' }, { status: 400 })
+      }
 
-    return NextResponse.json({ success: !!account && !!profile })
+      await profileDoc.save()
+      return NextResponse.json({ success: true, account, profile: profileDoc })
+    } catch (profileErr) {
+      // pokud selže profil, smažeme účet
+      await Account.findByIdAndDelete(account._id)
+      throw profileErr
+    }
   } catch (err) {
     console.error("Account PUT ERROR - ", err)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
