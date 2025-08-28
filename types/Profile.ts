@@ -30,6 +30,8 @@ export interface SocialState {
     position: string | null;
     telephone: string | null;
     email: string | null;
+    accentColor: string;
+    background: string;
     socials: SocialState[];
     links: LinkState[];
     videos: VideoState[];

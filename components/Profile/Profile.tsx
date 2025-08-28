@@ -10,6 +10,9 @@ import { User } from './User';
 import { DigitalProfile } from '../DigitalProfile/DigitalProfile';
 import { Button, ButtonSize, ButtonVariant } from '../Button';
 import { useTranslations } from 'next-intl';
+import { HexColorPicker } from "react-colorful";
+
+
 
 export const Profile = ({ profile }: { profile: ProfileState }) => {
   const t = useTranslations("Profile");
@@ -17,19 +20,25 @@ export const Profile = ({ profile }: { profile: ProfileState }) => {
   const [videos, setVideos] = useState(profile.videos);
   const [links, setLinks] = useState(profile.links);
   const [user, setUser] = useState(profile);
-  const digitalProfile = useMemo(() => ({ ...user, socials, videos, links}), [socials, videos, links, user])
+  const [accentColor, setColor] = useState(profile.accentColor);
+
+  const digitalProfile = useMemo(() => ({ ...user, socials, videos, links, accentColor}), [socials, videos, links, user, accentColor])
+
 
   const handleSave = () => {
-    axios.post('/api/profile', { newProfile: { ...user, socials, videos, links } })
+    axios.post('/api/profile', { updateProfile: { ...user, socials, videos, links, accentColor } })
       .then(() => mutate('/api/profile?myAccount=true'))
+      .catch(err => console.error("Save error:", err));
   };
 
   return (
     <ProfileWrapper>
       <ProfileAndDigitalWrapperStyled>
         <ProfileWrapperStyled className="test">
+
           <User profile={user} setProfile={setUser} />
           <h2>{t("optional")} <span>({t("info")})</span></h2>
+          <HexColorPicker color={accentColor} onChange={setColor} />
           <SocialsAndLinksWrapperStyled>
             <div>
               <h3>{t("social")}</h3>

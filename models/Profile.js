@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { type } from 'os';
 import { v4 as uuidv4 } from 'uuid';
 
 const Schema = mongoose.Schema;
@@ -39,6 +40,14 @@ const profileSchema = new Schema(
     surname: {
       type: String,
       required: true,
+    },
+    accentColor: {
+      type: String,
+      default: "#000"
+    },
+    background: {
+      type: String,
+      default: "default.jpg"
     },
     country: {
       type: String,
