@@ -15,7 +15,8 @@
       "basket": "Cart",
       "orders": "Orders",
       "profile": "My Profile",
-      "logout": "Log out"
+      "logout": "Log out",
+      "database": "Database controls"
     }
   },
   "Footer": {
@@ -71,6 +72,7 @@
     "register": "Register",
     "account1": "Already have an account and ",
     "account2": "want to log in?",
+    "registerCompleted": "Registration was completed successfully!",
     "alreadyRegistered": "You are already registered.",
     "validation": {
       "name": "First name must be at least 3 characters",

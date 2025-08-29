@@ -33,14 +33,49 @@ export const Register = () => {
 
     const register = async ({ email, password, name, surname }: { email: string, password: string, name: string, surname: string }) => {
         setLoading(true);
-        await axios.put('/api/account', { email, password, name, surname })
-            .then(({ data }) => {
-                if (data.success) {
-                    registerForm.reset();
+        
+        try {
+            const { data } = await axios.put('/api/account', { email, password, name, surname });
+            
+            if (data.success) {
+                // Registration successful - send email and redirect
+                await axios.post("/api/mail", {
+                    subject: "Registrace na quickpass.cz",
+                    to: "novotnykrystof@proton.me",
+                    type: "registration", 
+                });
+                
+                alert(t("registerCompleted"));
+                registerForm.reset();
+                router.push('/login');
+            } else {
+                // Registration failed but no specific error
+                alert(t("alreadyRegistered"));
+                router.push('/login');
+            }
+        } catch (error: any) {
+            // Handle different types of errors
+            if (error.response?.status === 400) {
+                const errorMessage = error.response?.data?.error;
+                
+                if (errorMessage === 'Email already exists') {
+                    // Email exists - alert and redirect to login
+                    alert(t("alreadyRegistered"));
                     router.push('/login');
+                } else {
+                    // Other 400 errors (validation, account/profile creation failed)
+                    alert(`${t("registrationError")}: ${errorMessage}`);
                 }
-            })
-        setLoading(false);
+            } else if (error.response?.status === 500) {
+                // Server error
+                alert(`${t("serverError")}: ${error.response?.data?.error || 'Internal Server Error'}`);
+            } else {
+                // Network or other errors
+                alert(`${t("unexpectedError")}: ${error.message}`);
+            }
+        } finally {
+            setLoading(false);
+        }
     }
 
     if (user) {

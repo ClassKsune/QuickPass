@@ -13,3 +13,8 @@ export const getAccount = ({ email, password }) =>
 
 export const changePassword = (filter, update) =>
   updateMongo(Account, filter, update)
+
+export const emailExists = async (email) => {
+  const account = await findMongo(Account, { email });
+  return !!account; // true pokud účet existuje
+};

@@ -16,7 +16,8 @@
             "orders": "Objednávky",
             "profile": "Můj profil",
             "logout": "Odhlásit se",
-            "share": "Sdílet"
+            "share": "Sdílet",
+            "database": "Ovládání databáze"
         }
     },
     "Footer": {
@@ -77,6 +78,7 @@
         "register": "Registrovat se",
         "account1": "Již máte účet a ",
         "account2": "chcete se přihlásit?",
+        "registerCompleted": "Registrace proběhla úspěšně!",
         "alreadyRegistered": "Už jsi zaregistrovaný.",
         "validation": {
             "name": "Jméno musí mít alespoň 3 znaky",

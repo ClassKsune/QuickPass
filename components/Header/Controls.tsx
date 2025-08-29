@@ -50,6 +50,7 @@ export const Controls = ({ mobile = false, onClick = () => {} }: { mobile?: bool
                     <AccountContent $isOpen={isProfileDropdownOpen}>
                         <Link onClick={() => setIsProfileDropdownOpen(false)} href="/profile">{t("profile")}</Link>
                         {user.rights.includes("admin") && <Link onClick={() => setIsProfileDropdownOpen(false)} href="/orders">{t("orders")}</Link>}
+                        {user.rights.includes("developer") && user.rights.includes("admin") && <Link onClick={() => setIsProfileDropdownOpen(false)} href="/developer">{t("database")}</Link>}
                         <Button onClick={signOut} variant={ButtonVariant.LIGHT} size={ButtonSize.sm} label={t("logout")} />
                     </AccountContent>
                 </AccountWrapper>

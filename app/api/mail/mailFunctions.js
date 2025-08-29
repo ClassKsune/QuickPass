@@ -80,13 +80,40 @@ const htmlOrderEmailTemplate = (order) => `
   </div>
 `
 
+const RegistrationSuccessful = () => `
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <tr>
+      <td style="background-color: #4CAF50; color: white; padding: 20px; text-align: center;">
+        <h1>Registrace dokončena</h1>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 30px; color: #333333;">
+        <p>Dobrý den,</p>
+        <p>děkujeme za registraci na <strong><a href="https://quickpass.cz" style="display: inline-block; color: #4CAF50; text-decoration: none;">quickpass.cz</a>
+        </p></strong>Vaše registrace byla úspěšně dokončena.</p>
+        <p>Můžete se nyní přihlásit pomocí svého e-mailu a hesla:</p>
+        <p style="text-align: center;">
+          <a href="https://quickpass.cz/login" style="display: inline-block; padding: 12px 24px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px;">Přihlásit se</a>
+        </p>
+        <p>Děkujeme,<br>Tým <strong>quickpass</strong></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: #f4f4f4; text-align: center; padding: 15px; font-size: 12px; color: #777777;">
+        Pokud jste se neregistrovali, ignorujte tento e-mail.
+      </td>
+    </tr>
+  </table>
+`
+
 export const sendMail = async({ subject, to = "info@quickpass.cz", type, data }) => {
   const mailOptions = {
     from: 'QuickPass info@quickpass.cz',
     to: to,
     subject: subject,
     text: 'QuickPass '+ subject,
-    html: type === "contact" ? htmlTemplate(data) : type === "forgot" ? htmlForgotEmailTemplate(to) : type === "order" ? htmlOrderEmailTemplate(data) : null,
+    html: type === "contact" ? htmlTemplate(data) : type === "forgot" ? htmlForgotEmailTemplate(to) : type === "order" ? htmlOrderEmailTemplate(data) : type === "registration" ? RegistrationSuccessful() : null
   }
 
   return (await transporter.sendMail(mailOptions))?.rejected.length === 0
