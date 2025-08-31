@@ -41,7 +41,7 @@ export const Register = () => {
                 // Registration successful - send email and redirect
                 await axios.post("/api/mail", {
                     subject: "Registrace na quickpass.cz",
-                    to: "novotnykrystof@proton.me",
+                    to: email,
                     type: "registration", 
                 });
                 
