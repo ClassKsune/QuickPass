@@ -30,7 +30,7 @@ export const Profile = ({ profile }: { profile: ProfileState }) => {
       .then(() => mutate('/api/profile?myAccount=true'))
       .catch(err => console.error("Save error:", err));
   };
-
+// <HexColorPicker color={accentColor} onChange={setColor} />
   return (
     <ProfileWrapper>
       <ProfileAndDigitalWrapperStyled>
@@ -38,7 +38,7 @@ export const Profile = ({ profile }: { profile: ProfileState }) => {
 
           <User profile={user} setProfile={setUser} />
           <h2>{t("optional")} <span>({t("info")})</span></h2>
-          <HexColorPicker color={accentColor} onChange={setColor} />
+          
           <SocialsAndLinksWrapperStyled>
             <div>
               <h3>{t("social")}</h3>
