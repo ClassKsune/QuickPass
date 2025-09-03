@@ -407,30 +407,27 @@ export const Editor: React.FC<{ handleOrder: (cards: any[]) => void }> = ({ hand
     [activeCardIndex, cardVariant, initialFromCanvasState, saveCanvasState]
   );
 
-  const onAddImage = useCallback(
-    async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      if (!file) return;
-      if (file.type !== 'image/svg+xml') {
-        event.target.value = '';
-        return;
-      }
-
+  
+  const onAddImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type === 'image/svg+xml') {
       const reader = new FileReader();
       reader.onload = async (e) => {
-        const svgString = (e.target?.result as string) || '';
+        const svgString = e.target?.result as string;
         const image = await FabricImage.fromURL(`data:image/svg+xml;base64,${btoa(svgString)}`);
-        image.filters.push(new filters.Saturation({ saturation: 4 }));
-        image.filters.push(new filters.Grayscale());
-        image.filters.push(new filters.RemoveColor({ color: '#ffffff', threshold: 40 }));
+
+        // Apply filters to the image
+        image.filters.push(new filters.Saturation({ saturation: 4 }))
+        image.filters.push(new filters.Grayscale())
+        image.filters.push(new filters.RemoveColor({ color: '#ffffff', threshold: 40 }))
         image.applyFilters();
-        getCanvas()?.add(image);
+
+        editor?.canvas.add(image);
       };
       reader.readAsText(file);
       event.target.value = '';
-    },
-    []
-  );
+    }
+  };
 
   const onAddText = useCallback(() => {
     const { left, top } = getCenter();

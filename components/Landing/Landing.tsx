@@ -32,6 +32,12 @@ export const Landing = () => {
     },
   ]
 
+  const imgRotation = [
+    "test",
+    "test",
+    "test"
+  ]
+  
   const [selectedVariant, setSelectedVariant] = useState<CardVariantEnum>(CardVariantEnum.Cherry);
   const [selectedProfile, setSelectedProfile] = useState(profiles[0].image);
   const profile = useMemo(() => profiles.find((p) => p.image === selectedProfile), [selectedProfile]);

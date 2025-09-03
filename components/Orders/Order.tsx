@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { OrderChipStyled, OrderClickWrapperStyled, OrderInfoWrapperStyled, OrderProductsWrapperStyled, OrderProductWrapperStyled, OrderQRWrapperStyled, OrderWrapperStyled } from "./Order.style";
 import { VirtualCard } from "../VirtualCard/VirtualCard";
-import { QRCode } from 'react-qrcode-logo';
+import { QRCodeSVG } from 'qrcode.react';
 import { Collapse } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
@@ -22,13 +22,17 @@ export const Order = ({ order }: any) => {
     };
 
     const handleDownload = () => {
-        if (qrCodeRef.current) {
-            const canvas = qrCodeRef.current.querySelector('canvas');
-            if (canvas) {
-                const url = canvas.toDataURL('image/png');
-                handleLinkDownload(url, 'qrcode.png');
-            }
+    if (qrCodeRef.current) {
+        const svg = qrCodeRef.current.querySelector('svg');
+        if (svg) {
+        const serializer = new XMLSerializer();
+        const source = serializer.serializeToString(svg);
+        const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        handleLinkDownload(url, 'qrcode.svg');
+        URL.revokeObjectURL(url);
         }
+    }
     };
 
     return (
@@ -59,7 +63,7 @@ export const Order = ({ order }: any) => {
                         ))}
                     </OrderProductsWrapperStyled>
                     <OrderQRWrapperStyled onClick={handleDownload} ref={qrCodeRef}>
-                        <QRCode value={`${baseUrl}/profile/${order.profile.url}`} />
+                        <QRCodeSVG value={`${baseUrl}/profile/${order.profile.url}`} />
                     </OrderQRWrapperStyled>
                 </div>
             </Collapse>
