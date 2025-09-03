@@ -26,7 +26,7 @@ export const Profile = ({ profile }: { profile: ProfileState }) => {
 
 
   const handleSave = () => {
-    axios.post('/api/profile', { updateProfile: { ...user, socials, videos, links, accentColor } })
+    axios.post('/api/profile', { newProfile: { ...user, socials, videos, links, accentColor } })
       .then(() => mutate('/api/profile?myAccount=true'))
       .catch(err => console.error("Save error:", err));
   };
