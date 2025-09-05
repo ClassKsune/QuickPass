@@ -21,7 +21,7 @@ export const DigitalProfile = ({ profile }: { profile: ProfileState }) => {
     const handleShare = async () => {
         if (typeof window === 'undefined') return;
         
-        const profileUrl = `${window.location.origin}/profile/${profile.alias ?? profile.url}`;
+        const profileUrl = window.location.origin.replace(/^https?:\/\//, '').replace(/^www\./, '') + "/profile/${profile.alias ?? profile.url}";
         const profileName = profile.name || 'Profile';
         
         const success = await copyToClipboard(profileUrl, {

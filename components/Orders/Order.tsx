@@ -12,7 +12,7 @@ export const Order = ({ order }: any) => {
     const t = useTranslations("Orders");
     const [opened, { toggle }] = useDisclosure(false);
     const qrCodeRef = useRef<HTMLDivElement>(null);
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin.replace(/^https?:\/\//, '').replace(/^www\./, '') : '';
 
     const handleLinkDownload = (url: string, name: string) => {
         const link = document.createElement('a');

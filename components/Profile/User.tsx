@@ -31,7 +31,7 @@ export const User = ({ profile, setProfile }: ProfileProps) => {
     const handleAliasButtonClick = async () => {
         if (typeof window === 'undefined') return;
         
-        const profileUrl = window.location.href + `/${profile.alias ?? profile.url}`;
+        const profileUrl = window.location.href.replace(/^https?:\/\//, '').replace(/^www\./, '') + `/${profile.alias ?? profile.url}`;
         const profileName = profile.name || 'Profile';
         
         const success = await copyToClipboard(profileUrl, {
