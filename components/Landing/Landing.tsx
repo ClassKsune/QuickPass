@@ -102,7 +102,7 @@ export const Landing = () => {
   const handleContactingForm = ({ firstName, lastName, email, phone, topic, message }: { firstName: string, lastName: string; email: string; phone: string; topic: string; message: string }) => {
     axios.post("/api/mail", {
       subject: "Kontaktní formulář",
-      to: "entitak@gmail.com",
+      to: "info@quickpass.cz",
       type: "contact",
       data: { firstName, lastName, email, phone, topic, message },
      })

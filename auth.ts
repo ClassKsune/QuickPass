@@ -4,8 +4,7 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { User } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
-
-export const isProduction = process.env.NODE_ENV === 'production';
+import { getApplicationUrl, isProduction } from './utils';
 
 export default NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
@@ -35,7 +34,7 @@ export default NextAuth({
         }
 
         const { email, password } = credentials;
-        const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+        const baseUrl = getApplicationUrl();
 
         try {
           const { data } = await axios.post(`${baseUrl}/api/account`, { email, password });

@@ -1,4 +1,5 @@
 import ForgotPassword from '@/models/ForgotPassword'
+import { getApplicationUrl } from '@/utils'
 const nodemailer = require("nodemailer")
 
 const transporter = nodemailer.createTransport({
@@ -52,7 +53,7 @@ const htmlForgotEmailTemplate = (email) => {
       <h1>Password reset request</h1>
       <p>We received a request to reset your password for your QuickPass account.</p>
       <p>Click the link below to reset your password:</p>
-      <a href="${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/reset-password?code=${createForgotPassword.code}&email=${encodeURIComponent(email)}" style="color: #00C48C;">Reset Password</a>
+      <a href="${getApplicationUrl()}/reset-password?code=${createForgotPassword.code}&email=${encodeURIComponent(email)}" style="color: #00C48C;">Reset Password</a>
       <p>If you did not request this, you can ignore this email.</p>
     </div>
   `

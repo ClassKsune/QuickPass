@@ -8,7 +8,7 @@ import { faChevronCircleLeft, faChevronCircleRight, faInfoCircle, faMinusCircle,
 import { Button, ButtonSize, ButtonVariant } from '../Button';
 import { useTranslations } from 'next-intl';
 import { useEditorContext } from '@/app/[locale]/EditorContext';
-import { Colors } from '@/utils';
+import { Colors, getApplicationUrl } from '@/utils';
 import { genUploader } from "uploadthing/client";
 export const { uploadFiles } = genUploader();
 
@@ -48,6 +48,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
   const textRef = useRef<HTMLInputElement | null>(null);
   const letterSpacingRef = useRef<HTMLInputElement | null>(null);
   const curveRef = useRef<HTMLInputElement | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleAddCard = async () => {
     saveCanvasState(activeCardIndex, cardVariant);
@@ -116,35 +117,18 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
 
   const handleResize = () => {
     const canvas = editor?.canvas;
-    const outerCanvasContainer = document.querySelector('#editor') as HTMLElement;
-    if (!canvas || !outerCanvasContainer) return;
+    if (!canvas) return;
+    const newWidth = 800;
+    const newHeight = newWidth / (800 / 600);
 
-    const canvasWidth = canvas.getWidth();
-    const canvasHeight = canvas.getHeight();
-
-    if (window?.innerWidth <= 2000) {
-      // canvas 100vw width
-      const ratio = canvasWidth / Math.max(canvasHeight, 600)
-      const scale = ratio / (800 / 600)
-      canvas.setViewportTransform([scale, 0, 0, scale, 0, 0])
-      canvas.setDimensions({
-        width: canvasWidth,
-        height: (canvasWidth / ratio) * scale
-      })
+    canvas.setDimensions({
+      width: newWidth,
+      height: newHeight,
+    });
+    if (isCanvasInitialized()) {
+      initialFromCanvasState();
     } else {
-      // canvas + controls width
-      const availableWidth = Math.min(window?.innerWidth * 0.4, 800);
-      const availableHeight = Math.min(window?.innerHeight, 600);
-
-      const widthRatio = availableWidth / canvasWidth;
-      const heightRatio = availableHeight / canvasHeight;
-      const scale = Math.min(widthRatio, heightRatio);
-
-      canvas.setViewportTransform([scale, 0, 0, scale, 0, 0]);
-      canvas.setDimensions({
-        width: Math.min(canvasWidth * scale, 800),
-        height: Math.min(canvasHeight * scale, Math.min(canvasWidth * scale, 800) / 1.333333),
-      });
+      initialize();
     }
   };
 
@@ -244,7 +228,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
         if ((obj as any).path && obj.type === "text") {
           (obj as any).id = "curvedText";
         }
-        if ((obj as any).src?.includes(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/images/`)) {
+        if ((obj as any).src?.includes(`${getApplicationUrl()}/images/`)) {
           (obj as any).id = "cardVariantImage";
           obj.selectable = false;
           obj.evented = false;
@@ -576,10 +560,19 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
     canvasSvg = serializer.serializeToString(svgDoc);
 
     // Insert the new curvedText SVG before the closing </svg> tag
-    return canvasSvg?.replace('</svg>', `${curvedTextSvg}</svg>`);
+    let finalSvg = canvasSvg?.replace('</svg>', `${curvedTextSvg}</svg>`);
+
+    // Replace width and height in <svg ...> to 86cm and 54cm
+    if (finalSvg) {
+      finalSvg = finalSvg.replace(/(<svg[^>]*?)\swidth="[^"]*"/i, '$1 width="86cm"');
+      finalSvg = finalSvg.replace(/(<svg[^>]*?)\sheight="[^"]*"/i, '$1 height="54cm"');
+    }
+
+    return finalSvg;
   }
 
   const exportCanvas = async () => {
+    setLoading(true);
     saveCanvasState(activeCardIndex, cardVariant);
 
     const json = editor?.canvas?.toJSON();
@@ -605,9 +598,8 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
         let url = '';
 
         const file = new File([canvasSvg as string], 'card.svg', { type: 'image/svg+xml' });
+
         const uploaded = await uploadFiles("imageUploader", { files: [file] })
-        console.log("TEST 1", uploaded?.[0]?.serverData?.fileUrl || uploaded?.[0]?.url)
-        console.log("TEST", uploaded)
         url = uploaded?.[0]?.serverData?.fileUrl || uploaded?.[0]?.url;
 
         return ({ ...card, url })
@@ -619,6 +611,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
     } else {
       console.error("Některý obrázek se nepodařilo nahrát. Zkuste to prosím znovu.");
     }
+    setLoading(false);
   };
 
   const handleReset = () => {
@@ -745,7 +738,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
       </EditorWrapperStyled>
       <ExportButtonWrapperStyled>
         <Button onClick={handleReset} size={ButtonSize.lg} variant={ButtonVariant.ERROR} label={t("reset_button")} />
-        <Button onClick={exportCanvas} size={ButtonSize.lg} variant={ButtonVariant.PRIMARY} label={t("button")} />
+        <Button loading={loading} onClick={exportCanvas} size={ButtonSize.lg} variant={ButtonVariant.PRIMARY} label={t("button")} />
       </ExportButtonWrapperStyled>
     </EditorGridStyled>
   );

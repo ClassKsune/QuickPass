@@ -17,13 +17,20 @@ export const ExportButtonWrapperStyled = styled.div`
 `;
 
 export const FabricJSCanvasStyled = styled(FabricJSCanvas)`
-  width: 40vw;
-  max-width: 800px;
-  aspect-ratio: 800/600;
+  width: min(80vw, 800px);
   margin-inline: auto;
+
+  div[data-fabric="wrapper"] {
+    width: max-content!important;
+    height: max-content!important;
+    margin-inline: auto;
+  }
 
   canvas {
     border-radius: 18px;
+    max-width: min(80vw, 800px);
+    height: auto!important;
+    aspect-ratio: 800 / 600;
   }
 
   @media ${device.lg} {
@@ -142,9 +149,12 @@ export const EditorTextWrapperStyled = styled.div`
   border-radius: 12px;
   row-gap: ${Spacing.sm};
   width: max-content;
-  max-width: 100%;
   height: max-content;
   padding: ${Spacing.sm};
+
+  @media ${device.lg} {
+    width: 80vw;
+  }
 `
 
 export const EditorTextContentStyled = styled.div`
@@ -212,7 +222,12 @@ export const EditorWrapperStyled = styled.div`
   padding-top: calc(${Spacing.sm} + 60px);
   padding-left: ${Spacing.sm};
   row-gap: ${Spacing.sm};
-  margin-right: auto;
+  margin-left: auto;
+  max-width: 80vw;
+
+  @media (max-width: 1850px) {
+    width: 100%;
+  }
 `
 
 export const EditorVariantWrapperStyled = styled.div`
