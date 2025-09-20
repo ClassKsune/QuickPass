@@ -115,7 +115,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
     setFontSize(16);
   };
 
-  const handleResize = () => {
+  const resizeCanvas = () => {
     const canvas = editor?.canvas;
     if (!canvas) return;
     const newWidth = 800;
@@ -125,6 +125,11 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
       width: newWidth,
       height: newHeight,
     });
+  }
+
+  const handleResize = () => {
+    resizeCanvas();
+
     if (isCanvasInitialized()) {
       initialFromCanvasState();
     } else {
@@ -135,6 +140,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
   const initialize = async(init = true) => {
     if (!editor?.canvas) return;
     editor?.canvas.clear();
+    resizeCanvas();
     const { width, height } = editor.canvas;
     const roundedCornersClipRect = new Rect({
       left: 0,
@@ -204,6 +210,7 @@ export const Editor = ({ handleOrder }: { handleOrder: Function }) => {
   }
 
   const initialFromCanvasState = async (index = activeCardIndex) => {
+    resizeCanvas();
     const card = getJSONFromCards(index)
     const json = card.json;
     let clipRectImage: FabricObject<Partial<FabricObjectProps>, SerializedObjectProps, ObjectEvents> | null = null
